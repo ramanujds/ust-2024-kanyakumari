@@ -1,1 +1,1 @@
-console.log("Hello UST")
+console.log("Hello UST Global Trivandrum")
