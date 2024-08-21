@@ -16,7 +16,9 @@ Create a simplified online shopping system in Java, incorporating fundamental co
 3. **Shopping Cart:**
 
    - Create a `ShoppingCart` class to manage the user's shopping cart.
+   - Apply 10% discounts to all electronics products and 20% to all clothing products.
    - Include methods to add products to the cart, display the cart contents, and calculate the total price.
+
 4. **User Input and Exception Handling:**
 
    - In the testing phase, simulate user input for adding electronics and clothing to the shopping cart.
