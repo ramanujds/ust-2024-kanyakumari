@@ -4,8 +4,6 @@
 
 ## Day 1 - Aug-19-2024
 
-
-
 ### **What Are We Going to Learn?**
 
 1. **Java SE:** Core Java syntax, OOP concepts, and essential libraries.
@@ -17,14 +15,17 @@
 7. **AWS:** Introduction to cloud services for deploying Java applications.
 8. **React/Angular:** Building dynamic, front-end web applications.
 
-### **Agile:** 
-   - Overview of Agile principles and practices in software development.
+### **Agile:**
 
-### **SDLC:** 
-   - Introduction to the Software Development Life Cycle and its stages.
+- Overview of Agile principles and practices in software development.
 
-### **Daily Standup:** 
-   - Understanding the purpose and format of daily Agile meetings.
+### **SDLC:**
+
+- Introduction to the Software Development Life Cycle and its stages.
+
+### **Daily Standup:**
+
+- Understanding the purpose and format of daily Agile meetings.
 
 ---
 
@@ -63,3 +64,52 @@
 - **MySQL/SQLServer:** Database setup for development.
 - **Node.js:** Installing Node.js for full-stack or front-end development.
 
+
+  How to clone a repository?
+  --------------------------
+
+
+  1. Go to the repository
+  2. Click on Clone
+  3. Clone SSH
+     (_ Copy the link_)
+  4. Open Termainal/CMD inside your desired folder
+
+  * <b> Few important points</b>
+  * copy the private-key in the desired folder
+  * Also add the private key on your on that desired folder using terminal/git-bash
+  * Hints - repeat the eval and ssh-add commands
+
+  1. Type ```git clone <repo-link>```
+
+  How commit new changes?
+  -----------------------
+
+  1. Add all the changes to stagging
+     ```git add .```
+  2. Commit the changes
+     ```git commit -m "a suitable message"```
+
+  * <b> NB: Commit will save all the changes to local repository </b>
+
+  1. Update/Push the commit to remote
+     ``` git push```
+
+  <b> NB: To see the status of the repository we can use </b> ```git status```
+
+  How to get all the changes from remote to local?
+  ------------------------------------------------
+
+  ```git pull```
+
+  Steps for completing the Exercises/Assignments
+  ----------------------------------------------
+
+  1. Go to the respective exercise/assignment repo
+  2. Fork the repo
+  3. Clone the <b>forked</b> repo on your local machine (Hints - Follow the previous steps)
+
+  * <b> NB. Don't clone a repository inside another repository </b>
+
+  1. Modify/Complete the exercise
+  2. Commit and Push
