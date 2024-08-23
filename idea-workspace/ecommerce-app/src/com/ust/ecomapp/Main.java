@@ -30,10 +30,22 @@ public class Main {
             p.displayDetails();
         }
 
+
+
         double totalPrice = cartService.calculateTotalPrice();
         System.out.println("Total : "+totalPrice);
 
         cartService.applyDiscounts();
+
+        System.out.println("After Discounts : ");
+        products = cartService.getCartItems();
+        System.out.println("Products in Cart : ");
+        for (Product p:products){
+            if (p==null){
+                break;
+            }
+            p.displayDetails();
+        }
 
         double discountedPrice = cartService.calculateTotalPrice();
 

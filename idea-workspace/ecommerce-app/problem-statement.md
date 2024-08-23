@@ -13,15 +13,19 @@ Create a simplified online shopping system in Java, incorporating fundamental co
    - Create two classes, `Electronics` and `Clothing`, that inherit from the `Product` class.
    - Add attributes specific to each type (e.g., `brand` and `warrantyPeriod` for electronics, `size` and `material` for clothing).
    - Override the `displayDetails` method in each derived class to include information about the specific attributes.
-3. **Shopping Cart:**
+3. **Available Products**
+   - Initialize with few Products 
+
+4. **Shopping Cart:**
 
    - Create a `ShoppingCart` class to manage the user's shopping cart.
    - Apply 10% discounts to all electronics products and 20% to all clothing products.
    - Include methods to add products to the cart, display the cart contents, and calculate the total price.
 
-4. **User Input and Exception Handling:**
+5. **User Input and Exception Handling:**
 
-   - In the testing phase, simulate user input for adding electronics and clothing to the shopping cart.
-   - Implement exception handling to ensure valid inputs for product creation (e.g., non-empty product name, positive product ID).
-   - Throw DuplicateProductIDException when user tries to add product with similar id
-   - Add deleteProduct(int id) and throw an exception ProductNotFoundException if the product is not available;
+   - Welcome to My Shopping App
+   - Select an Option:
+   - 1 : View All Products
+   - 2 : Add Product to cart
+   - 3 : View Cart
