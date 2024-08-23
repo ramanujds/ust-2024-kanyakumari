@@ -2,14 +2,19 @@ package loosecouplingexample;
 
 public class Phone {
 
-    // sim object
+    private Sim sim;
 
-    // browse(){
-    // sim object browse
-    //   }
+    public void setSim(Sim sim) {
+        this.sim = sim;
+    }
 
-    //call(){
-//        sim object call()
-//    }
+    public void browseInternet(){
+        sim.browseInternet();
+    }
+
+    public void call(){
+        sim.call();
+    }
+
 
 }
