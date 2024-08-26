@@ -49,4 +49,9 @@ public class CartServiceImpl implements CartService{
             }
         }
     }
+
+    @Override
+    public Product getProductById(int id) {
+        return cartRepo.findProduct(id);
+    }
 }

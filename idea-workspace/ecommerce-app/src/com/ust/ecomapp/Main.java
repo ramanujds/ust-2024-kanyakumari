@@ -18,38 +18,40 @@ public class Main {
 
         CartService cartService = new CartServiceImpl();
 
-        cartService.addToCart(cp1);
-        cartService.addToCart(ep1);
+        cartService.getProductById(-10);
 
-        Product []products = cartService.getCartItems();
-        System.out.println("Products in Cart : ");
-        for (Product p:products){
-            if (p==null){
-                break;
-            }
-            p.displayDetails();
-        }
-
-
-
-        double totalPrice = cartService.calculateTotalPrice();
-        System.out.println("Total : "+totalPrice);
-
-        cartService.applyDiscounts();
-
-        System.out.println("After Discounts : ");
-        products = cartService.getCartItems();
-        System.out.println("Products in Cart : ");
-        for (Product p:products){
-            if (p==null){
-                break;
-            }
-            p.displayDetails();
-        }
-
-        double discountedPrice = cartService.calculateTotalPrice();
-
-        System.out.println("After Discounts : "+discountedPrice);
+//        cartService.addToCart(cp1);
+//        cartService.addToCart(ep1);
+//
+//        Product []products = cartService.getCartItems();
+//        System.out.println("Products in Cart : ");
+//        for (Product p:products){
+//            if (p==null){
+//                break;
+//            }
+//            p.displayDetails();
+//        }
+//
+//
+//
+//        double totalPrice = cartService.calculateTotalPrice();
+//        System.out.println("Total : "+totalPrice);
+//
+//        cartService.applyDiscounts();
+//
+//        System.out.println("After Discounts : ");
+//        products = cartService.getCartItems();
+//        System.out.println("Products in Cart : ");
+//        for (Product p:products){
+//            if (p==null){
+//                break;
+//            }
+//            p.displayDetails();
+//        }
+//
+//        double discountedPrice = cartService.calculateTotalPrice();
+//
+//        System.out.println("After Discounts : "+discountedPrice);
 
     }
 }

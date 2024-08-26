@@ -12,4 +12,6 @@ public interface CartService {
 
     public void applyDiscounts();
 
+    public Product getProductById(int id);
+
 }

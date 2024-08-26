@@ -2,6 +2,9 @@ package com.ust.ecomapp.repository;
 
 import com.ust.ecomapp.model.Product;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class CartRepositoryImpl implements CartRepository {
 
     private Product []products = new Product[10];
@@ -15,6 +18,7 @@ public class CartRepositoryImpl implements CartRepository {
     }
 
     public Product findProduct(int id) {
+
         for (Product p:products){
             if (p==null){
                 break;

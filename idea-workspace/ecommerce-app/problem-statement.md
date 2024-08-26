@@ -29,3 +29,15 @@ Create a simplified online shopping system in Java, incorporating fundamental co
    - 1 : View All Products
    - 2 : Add Product to cart
    - 3 : View Cart
+
+6. Exception Handling
+- InvalidInputException : Unchecked Exception
+  - Product ID should be a positive value
+  - Product Name should not be null or blank
+  - price should be a positive value
+  
+ - ProductNotFoundException : Checked Exception
+  - if product with id or name is not present
+
+ - DuplicateProductException : Checked Exception
+  - if one tries to add two products with same id
