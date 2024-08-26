@@ -1,5 +1,6 @@
 package com.ust.ecomapp.repository;
 
+import com.ust.ecomapp.exception.ProductNotFoundException;
 import com.ust.ecomapp.model.Product;
 
 import java.io.FileNotFoundException;
@@ -17,7 +18,7 @@ public class CartRepositoryImpl implements CartRepository {
 
     }
 
-    public Product findProduct(int id) {
+    public Product findProduct(int id)throws ProductNotFoundException {
 
         for (Product p:products){
             if (p==null){
@@ -27,7 +28,7 @@ public class CartRepositoryImpl implements CartRepository {
                 return p;
             }
         }
-        return null;
+        throw new ProductNotFoundException("Product with ID : "+id+ " not Found");
     }
 
     public Product[] getAllProducts() {

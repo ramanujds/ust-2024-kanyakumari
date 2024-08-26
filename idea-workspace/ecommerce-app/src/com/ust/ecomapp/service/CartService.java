@@ -1,5 +1,6 @@
 package com.ust.ecomapp.service;
 
+import com.ust.ecomapp.exception.ProductNotFoundException;
 import com.ust.ecomapp.model.Product;
 
 public interface CartService {
@@ -12,6 +13,6 @@ public interface CartService {
 
     public void applyDiscounts();
 
-    public Product getProductById(int id);
+    public Product getProductById(int id)throws ProductNotFoundException;
 
 }

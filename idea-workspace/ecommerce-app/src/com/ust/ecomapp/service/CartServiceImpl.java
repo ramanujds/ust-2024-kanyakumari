@@ -1,5 +1,6 @@
 package com.ust.ecomapp.service;
 
+import com.ust.ecomapp.exception.ProductNotFoundException;
 import com.ust.ecomapp.model.Clothing;
 import com.ust.ecomapp.model.Electronics;
 import com.ust.ecomapp.model.Product;
@@ -51,7 +52,7 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Product getProductById(int id) {
+    public Product getProductById(int id)throws ProductNotFoundException {
         return cartRepo.findProduct(id);
     }
 }
