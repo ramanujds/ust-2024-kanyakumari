@@ -296,8 +296,61 @@ for (int i = 0; i < arr.length; i++) {
 - **Team 7**: Class Diagram and Sequence Diagram
 - **Team 8**: Use Case Diagram, Agile Process
 
-# Day 6 - Aug 26, 2024
+## Day 6 - Aug 26, 2024
 
 ## Daily Standup
-- (Details to be added)
-```
+
+### What did we learn yesterday?
+
+- **Loose Coupling:**
+  - We explored the concept of loose coupling, where components or classes interact with each other with minimal dependencies, making the system more flexible and easier to maintain.
+  
+- **Interfaces and Inheritance:**
+  - We delved into how interfaces provide a way to achieve abstraction and multiple inheritance in Java, and how inheritance allows us to create a new class based on an existing class, promoting code reusability.
+
+### What are we going to learn today?
+
+- **Exception Handling:**
+  - We'll be focusing on how Java handles runtime errors, enabling us to write more robust and error-resistant code. Topics include the use of `try`, `catch`, `finally`, `throw`, and `throws`.
+
+### Any challenge?
+
+- No challenges were encountered.
+
+### What are we going to learn this week?
+
+- **Exception Handling:**
+  - Continuing our deep dive into managing errors and ensuring our programs handle unexpected situations gracefully.
+
+- **Collection Framework:**
+  - We'll learn about Java's powerful collection classes (like `ArrayList`, `HashMap`, etc.) that provide data structures for storing and manipulating groups of objects.
+
+- **Java 8 Stream API:**
+  - Understanding the Stream API for processing collections of objects in a functional style, which allows us to write concise and readable code.
+
+- **Multi-Threading:**
+  - We'll explore the concepts of concurrent programming, enabling us to execute multiple threads simultaneously to perform tasks in parallel.
+
+- **File Handling:**
+  - Learning how to read from and write to files in Java, which is essential for data persistence.
+
+- **MySQL + JDBC:**
+  - We'll dive into database connectivity, understanding how Java applications interact with MySQL databases using JDBC (Java Database Connectivity).
+
+---
+
+### Exception Handling
+
+#### `throw`
+- Used to explicitly throw an exception from a method or any block of code. The type of exception to be thrown must be derived from the `Throwable` class.
+
+#### `throws`
+- Used in method signatures to declare the exceptions that a method can throw, informing the caller that they must handle these exceptions.
+
+#### Exception Handling with respect to Method Overriding
+
+- **When the super method doesn't throw an exception:**
+  - The child method cannot throw any checked exception, ensuring that overriding methods remain compatible with the contract of the parent class.
+
+- **When the super method throws an exception:**
+  - The child method can throw the same exception or a subclass of the exception, but it cannot throw a broader (super type) exception, maintaining the principle of substitution.
