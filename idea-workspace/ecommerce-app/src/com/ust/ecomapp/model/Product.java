@@ -1,5 +1,7 @@
 package com.ust.ecomapp.model;
 
+import java.util.StringJoiner;
+
 public class Product {
 
 
@@ -56,5 +58,15 @@ public class Product {
         System.out.println("Name : "+productName);
         System.out.println("Price : "+price);
         System.out.println("Quantity : "+quantityInStock);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Product.class.getSimpleName() + "[", "]")
+                .add("productId=" + productId)
+                .add("productName='" + productName + "'")
+                .add("price=" + price)
+                .add("quantityInStock=" + quantityInStock)
+                .toString();
     }
 }

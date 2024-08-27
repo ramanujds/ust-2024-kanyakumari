@@ -1,5 +1,7 @@
 package com.ust.ecomapp.model;
 
+import java.util.StringJoiner;
+
 public class Electronics extends Product{
 
     private int warrantyPeriod;
@@ -34,5 +36,13 @@ public class Electronics extends Product{
         super.displayDetails();
         System.out.println("Brand : "+brand);
         System.out.println("Warranty Period : "+warrantyPeriod);
+    }
+
+    public String toString() {
+        return new StringJoiner(", ", Electronics.class.getSimpleName() + "[", "]")
+                .add(super.toString())
+                .add("warrantyPeriod=" + warrantyPeriod)
+                .add("brand='" + brand + "'")
+                .toString();
     }
 }

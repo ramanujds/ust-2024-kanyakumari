@@ -19,47 +19,51 @@ public class Main {
         Product cp1 = new Clothing(10, "T-Shirt", 2000, 10, Size.MEDIUM, "Cotton");
         Product cp2 = new Clothing(11, "Jeans", 4000, 10, Size.LARGE, "Denim");
 
-        CartService cartService = new CartServiceImpl();
+        System.out.println(cp1);
 
-        cartService.addToCart(cp1);
-        cartService.addToCart(ep1);
-
-        try {
-            Product product = cartService.getProductById(100);
-            product.displayDetails();
-        } catch (ProductNotFoundException ex) {
-            System.err.println(ex.getMessage());
-        }
-
-
-
-        List<Product> products  = cartService.getCartItems();
-        System.out.println("Products in Cart : ");
-        for (Product p:products){
-
-            p.displayDetails();
-        }
-
-
-
-        double totalPrice = cartService.calculateTotalPrice();
-        System.out.println("Total : "+totalPrice);
-
-        cartService.applyDiscounts();
-
-        System.out.println("After Discounts : ");
-        products = cartService.getCartItems();
-        System.out.println("Products in Cart : ");
-        for (Product p:products){
-            if (p==null){
-                break;
-            }
-            p.displayDetails();
-        }
-
-        double discountedPrice = cartService.calculateTotalPrice();
-
-        System.out.println("After Discounts : "+discountedPrice);
+//
+//
+//        CartService cartService = new CartServiceImpl();
+//
+//        cartService.addToCart(cp1);
+//        cartService.addToCart(ep1);
+//
+//        try {
+//            Product product = cartService.getProductById(100);
+//            product.displayDetails();
+//        } catch (ProductNotFoundException ex) {
+//            System.err.println(ex.getMessage());
+//        }
+//
+//
+//
+//        List<Product> products  = cartService.getCartItems();
+//        System.out.println("Products in Cart : ");
+//        for (Product p:products){
+//
+//            p.displayDetails();
+//        }
+//
+//
+//
+//        double totalPrice = cartService.calculateTotalPrice();
+//        System.out.println("Total : "+totalPrice);
+//
+//        cartService.applyDiscounts();
+//
+//        System.out.println("After Discounts : ");
+//        products = cartService.getCartItems();
+//        System.out.println("Products in Cart : ");
+//        for (Product p:products){
+//            if (p==null){
+//                break;
+//            }
+//            p.displayDetails();
+//        }
+//
+//        double discountedPrice = cartService.calculateTotalPrice();
+//
+//        System.out.println("After Discounts : "+discountedPrice);
 
     }
 }

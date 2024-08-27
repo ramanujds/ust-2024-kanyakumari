@@ -1,5 +1,7 @@
 package com.ust.ecomapp.model;
 
+import java.util.StringJoiner;
+
 public class Clothing extends Product{
 
     private Size size;
@@ -34,5 +36,14 @@ public class Clothing extends Product{
         super.displayDetails();
         System.out.println("Size : " + size);
         System.out.println("Material : " + material);
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Clothing.class.getSimpleName() + "[", "]")
+                .add(super.toString())
+                .add("size=" + size)
+                .add("material='" + material + "'")
+                .toString();
     }
 }
