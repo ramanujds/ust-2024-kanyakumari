@@ -5,25 +5,21 @@ import com.ust.ecomapp.model.Product;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CartRepositoryImpl implements CartRepository {
 
-    private Product []products = new Product[10];
+    private List<Product> products = new ArrayList<>();
     int currentIndex = 0;
 
     public void addProduct(Product product) {
-
-        products[currentIndex]=product;
-        currentIndex++;
-
+        products.add(product);
     }
 
     public Product findProduct(int id)throws ProductNotFoundException {
 
         for (Product p:products){
-            if (p==null){
-                break;
-            }
             if (p.getProductId()==id){
                 return p;
             }
@@ -31,7 +27,7 @@ public class CartRepositoryImpl implements CartRepository {
         throw new ProductNotFoundException("Product with ID : "+id+ " not Found");
     }
 
-    public Product[] getAllProducts() {
+    public List<Product> getAllProducts() {
         return products;
     }
 }

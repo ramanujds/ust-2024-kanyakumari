@@ -7,6 +7,8 @@ import com.ust.ecomapp.model.Product;
 import com.ust.ecomapp.repository.CartRepository;
 import com.ust.ecomapp.repository.CartRepositoryImpl;
 
+import java.util.List;
+
 public class CartServiceImpl implements CartService{
 
     private CartRepository cartRepo = new CartRepositoryImpl();
@@ -17,28 +19,22 @@ public class CartServiceImpl implements CartService{
 
     }
 
-    public Product[] getCartItems() {
+    public List<Product> getCartItems() {
         return cartRepo.getAllProducts();
     }
 
     public double calculateTotalPrice() {
-        Product[] products = cartRepo.getAllProducts();
+        List<Product> products = cartRepo.getAllProducts();
         double total = 0;
         for (Product p:products){
-            if (p==null){
-                break;
-            }
             total+=p.getPrice();
         }
         return total;
     }
 
     public void applyDiscounts() {
-        Product[] products = cartRepo.getAllProducts();
+        List<Product> products  = cartRepo.getAllProducts();
         for (Product p:products){
-            if (p==null){
-                break;
-            }
             if (p instanceof Electronics){
                 double price = p.getPrice();
                 price = price - price*.10;

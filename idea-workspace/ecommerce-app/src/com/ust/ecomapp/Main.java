@@ -8,6 +8,8 @@ import com.ust.ecomapp.model.Size;
 import com.ust.ecomapp.service.CartService;
 import com.ust.ecomapp.service.CartServiceImpl;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -31,12 +33,10 @@ public class Main {
 
 
 
-        Product []products = cartService.getCartItems();
+        List<Product> products  = cartService.getCartItems();
         System.out.println("Products in Cart : ");
         for (Product p:products){
-            if (p==null){
-                break;
-            }
+
             p.displayDetails();
         }
 

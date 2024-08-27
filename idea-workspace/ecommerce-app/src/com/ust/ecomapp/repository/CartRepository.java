@@ -4,6 +4,7 @@ import com.ust.ecomapp.exception.ProductNotFoundException;
 import com.ust.ecomapp.model.Product;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface CartRepository {
 
@@ -11,6 +12,6 @@ public interface CartRepository {
 
     public Product findProduct(int id) throws ProductNotFoundException;
 
-    public Product[] getAllProducts();
+    public List<Product> getAllProducts();
 
 }
