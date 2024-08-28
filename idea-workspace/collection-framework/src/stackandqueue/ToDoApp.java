@@ -1,26 +1,31 @@
 package stackandqueue;
 
+import model.Status;
+import model.Task;
+
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
 public class ToDoApp {
 
-    private Queue<String> taskQueue = new LinkedList<>();
-    private Stack<String> completedTasks = new Stack<>();
+    private Queue<Task> taskQueue = new PriorityQueue<>();
+    private Stack<Task> completedTasks = new Stack<>();
 
 
     public void addTask(){
-        taskQueue.offer("Learn Java");
-        taskQueue.offer("Learn Python");
-        taskQueue.offer("Learn Swimming");
-        taskQueue.offer("Join Gym");
+        taskQueue.offer(new Task("Learn Java",5, Status.PENDING));
+        taskQueue.offer(new Task("Learn Python",4, Status.PENDING));
+        taskQueue.offer(new Task("Learn Swimming",2, Status.PENDING));
+        taskQueue.offer(new Task("Join Gym",4, Status.PENDING));
     }
 
     public void processTasks(){
         while (!taskQueue.isEmpty()){
-            String currentTask = taskQueue.poll();
-            System.out.println(currentTask+ " : Completed");
+            Task currentTask = taskQueue.poll();
+            currentTask.setStatus(Status.COMPLETED);
+            System.out.println(currentTask.getTitle()+ " : Completed");
             completedTasks.push(currentTask);
         }
 
