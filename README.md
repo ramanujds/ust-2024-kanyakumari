@@ -354,3 +354,63 @@ for (int i = 0; i < arr.length; i++) {
 
 - **When the super method throws an exception:**
   - The child method can throw the same exception or a subclass of the exception, but it cannot throw a broader (super type) exception, maintaining the principle of substitution.
+
+
+## Day 7 - Aug 27, 2024
+
+## Daily Standup
+
+### What did we learn yesterday?
+
+- **Exception Handling:**
+  - We covered how to manage runtime errors in Java using `try`, `catch`, `finally`, `throw`, and `throws`. We also discussed how exception handling integrates with method overriding.
+
+### What are we going to learn today?
+
+- **Collection Framework:**
+  - Today's focus will be on the Collection Framework, exploring different types of collections, such as `List`, and understanding their characteristics and performance.
+
+### Any challenge?
+
+- No challenges were encountered.
+
+---
+
+### Collection Framework
+
+#### List
+- An **ordered** collection that **allows duplicates** and **maintains insertion order**.
+- Elements can be accessed and modified based on their **index**.
+
+#### Comparing Common Collections:
+
+| Collection Type | Insertion Time | Access Time |
+|-----------------|----------------|-------------|
+| `ArrayList`     | O(1)           | O(n)        |
+| `LinkedList`    | O(1)           | O(n)        |
+| `HashSet`       | O(1)           | O(1)        |
+
+# Day 8 - Aug 28, 2024
+
+## Map
+
+### HashMap
+- A key-value pair data structure that does not maintain any order.
+- Provides constant-time performance (O(1)) for basic operations like adding and accessing elements.
+
+### TreeMap
+- A key-value pair data structure that maintains a sorted order based on the natural ordering of keys or by a specified comparator.
+- Generally slower than `HashMap` but useful when order is important.
+
+### Finding the Occurrences of Characters with a Map
+
+Given the word "Hello":
+
+| Character | Occurrences |
+|-----------|-------------|
+| H         | 1           |
+| e         | 1           |
+| l         | 2           |
+| o         | 1           |
+
+- Use the `containsKey(key)` method to check if a character is already in the map before updating its count.
