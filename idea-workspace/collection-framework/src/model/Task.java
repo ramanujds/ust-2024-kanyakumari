@@ -2,7 +2,7 @@ package model;
 
 import java.util.StringJoiner;
 
-public class Task implements Comparable<Task>{
+public class Task{
     private String title;
     private int priority;
     private Status status;
@@ -37,9 +37,6 @@ public class Task implements Comparable<Task>{
         this.status = status;
     }
 
-    public int compareTo(Task t) {
-        return t.priority-this.priority;
-    }
 
     @Override
     public String toString() {

@@ -1,8 +1,11 @@
 package lambdaexpression;
 
+import java.util.function.Consumer;
+
 interface MathOperation {
     int doCalculate(int a, int b);
 }
+
 
 class Calculator {
     int calculate(int a, int b, MathOperation operation) {

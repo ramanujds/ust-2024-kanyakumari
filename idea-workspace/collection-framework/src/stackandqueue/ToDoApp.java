@@ -3,10 +3,7 @@ package stackandqueue;
 import model.Status;
 import model.Task;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class ToDoApp {
 
