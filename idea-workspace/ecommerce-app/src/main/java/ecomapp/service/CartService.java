@@ -1,7 +1,7 @@
-package com.ust.ecomapp.service;
+package ecomapp.service;
 
-import com.ust.ecomapp.exception.ProductNotFoundException;
-import com.ust.ecomapp.model.Product;
+import ecomapp.exception.ProductNotFoundException;
+import ecomapp.model.Product;
 
 import java.util.List;
 

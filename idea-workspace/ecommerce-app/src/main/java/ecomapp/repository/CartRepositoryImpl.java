@@ -1,10 +1,8 @@
-package com.ust.ecomapp.repository;
+package ecomapp.repository;
 
-import com.ust.ecomapp.exception.ProductNotFoundException;
-import com.ust.ecomapp.model.Product;
+import ecomapp.exception.ProductNotFoundException;
+import ecomapp.model.Product;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

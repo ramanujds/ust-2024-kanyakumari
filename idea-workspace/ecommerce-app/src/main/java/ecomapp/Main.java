@@ -1,12 +1,11 @@
-package com.ust.ecomapp;
+package ecomapp;
 
-import com.ust.ecomapp.exception.ProductNotFoundException;
-import com.ust.ecomapp.model.Clothing;
-import com.ust.ecomapp.model.Electronics;
-import com.ust.ecomapp.model.Product;
-import com.ust.ecomapp.model.Size;
-import com.ust.ecomapp.service.CartService;
-import com.ust.ecomapp.service.CartServiceImpl;
+import ecomapp.model.Clothing;
+import ecomapp.model.Electronics;
+import ecomapp.model.Product;
+import ecomapp.model.Size;
+import ecomapp.service.CartService;
+import ecomapp.service.CartServiceImpl;
 
 import java.util.List;
 

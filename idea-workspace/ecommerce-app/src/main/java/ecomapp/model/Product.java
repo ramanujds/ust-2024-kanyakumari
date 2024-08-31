@@ -1,4 +1,4 @@
-package com.ust.ecomapp.model;
+package ecomapp.model;
 
 import java.util.StringJoiner;
 
