@@ -3,38 +3,30 @@ package collections;
 import model.Trainee;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SetExample {
 
     public static void main(String[] args) {
 
-//        Set<String> set = new TreeSet<>(List.of("Abc","Pqr","123","Xyz","Xyz"));
-//
-//        for (String str:set){
-//            System.out.println(str);
-//        }
+        var t1 = new Trainee(1, "Manya", "Telangana");
+        var t2 = new Trainee(2, "Russel", "Tamilnadu");
+        var t3 = new Trainee(3, "Joel", "Kerala");
+        var t4 = new Trainee(4, "Srinivas", "Maharashtra");
+        var t5 = new Trainee(5, "Akash", "Kerala");
 
-        Set<Trainee> trainees = new HashSet<>();
+        var trainees = List.of(t1, t2, t3, t4, t5);
 
-        Trainee t1 = new Trainee(1,"Manya","Telangana");
-        Trainee t2 = new Trainee(2,"Russel","Tamilnadu");
-        Trainee t3 = new Trainee(3,"Joel","Kerala");
-        Trainee t4 = new Trainee(3,"Joel","Kerala");
+        var mallus = trainees.stream()
+                .map(Trainee::new)
+                .toList();
 
-        trainees.add(t1);
-        trainees.add(t2);
-        trainees.add(t3);
-        trainees.add(t4);
-
-        for (Trainee t:trainees){
-            System.out.println(t);
-        }
-
-
-
-
-
-
+        mallus.forEach(System.out::println);
+        trainees.forEach(System.out::println);
     }
 
 }
+
+
+
+

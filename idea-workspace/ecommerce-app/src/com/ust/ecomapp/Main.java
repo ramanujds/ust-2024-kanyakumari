@@ -19,14 +19,20 @@ public class Main {
         Product cp1 = new Clothing(10, "T-Shirt", 2000, 10, Size.MEDIUM, "Cotton");
         Product cp2 = new Clothing(11, "Jeans", 4000, 10, Size.LARGE, "Denim");
 
-        System.out.println(cp1);
 
 //
 //
-//        CartService cartService = new CartServiceImpl();
-//
-//        cartService.addToCart(cp1);
-//        cartService.addToCart(ep1);
+        CartService cartService = new CartServiceImpl();
+
+        cartService.addToCart(cp1);
+        cartService.addToCart(ep1);
+        cartService.addToCart(ep2);
+        cartService.addToCart(cp2);
+
+        List<Product> products =  cartService.getCartItems();
+        products.sort((p1,p2)->Double.compare(p1.getPrice(),p2.getPrice()));
+       products.forEach(p-> System.out.println(p));
+
 //
 //        try {
 //            Product product = cartService.getProductById(100);

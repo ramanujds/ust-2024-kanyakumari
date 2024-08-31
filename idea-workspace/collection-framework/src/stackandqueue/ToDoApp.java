@@ -7,7 +7,9 @@ import java.util.*;
 
 public class ToDoApp {
 
-    private Queue<Task> taskQueue = new PriorityQueue<>();
+    private Queue<Task> taskQueue = new PriorityQueue<>(
+            (t1,t2)->t2.getPriority()-t1.getPriority()
+    );
     private Stack<Task> completedTasks = new Stack<>();
 
 

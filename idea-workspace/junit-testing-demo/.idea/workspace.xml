@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2a2034b5-3cfe-4113-98f1-65e335396b93" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../arrays-and-strings/arrays-and-strings.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../collection-framework/collection-framework.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-app-with-maven/src/main/java/com/ust/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecom-basic/ecom-basic.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ecommerce-app/ecommerce-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employee-hierarchy/employee-hierarchy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../exception-handling/exception-handling.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hello-ust/hello-ust.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/java-8.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/src/dateandtime/Trainee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/src/dateandtime/TraineeApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/src/stramapi/MethodReferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/src/stramapi/StreamApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java-8/src/stramapi/StreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ust/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ust/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/ust/CalculatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../oop-concepts/oop-concepts.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../collection-framework/src/collections/SetExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../collection-framework/src/collections/SetExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../collection-framework/src/model/Trainee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../collection-framework/src/model/Trainee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../collection-framework/src/stackandqueue/ToDoApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../collection-framework/src/stackandqueue/ToDoApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/com/ust/ecomapp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ecommerce-app/src/com/ust/ecomapp/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2lPSIetu0FlA8iO7ZfNqFgcjP46" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "JUnit.CalculatorTest.addTest.executor": "Run",
+    "JUnit.CalculatorTest.divideTest.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.junit-testing-demo [test].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.CalculatorTest.divideTest">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ust.App" />
+      <module name="junit-testing-demo" />
+      <option name="PROGRAM_PARAMETERS" value="10 70" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ust.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.addTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit-testing-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ust.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ust" />
+      <option name="MAIN_CLASS_NAME" value="com.ust.CalculatorTest" />
+      <option name="METHOD_NAME" value="addTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CalculatorTest.divideTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="junit-testing-demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ust.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ust" />
+      <option name="MAIN_CLASS_NAME" value="com.ust.CalculatorTest" />
+      <option name="METHOD_NAME" value="divideTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="JUnit.CalculatorTest.addTest" />
+      <item itemvalue="JUnit.CalculatorTest.divideTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CalculatorTest.divideTest" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.CalculatorTest.addTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a2034b5-3cfe-4113-98f1-65e335396b93" name="Changes" comment="" />
+      <created>1725080141562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725080141562</updated>
+    </task>
+    <servers />
+  </component>
+</project>
