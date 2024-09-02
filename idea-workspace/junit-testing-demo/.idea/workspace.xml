@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a2034b5-3cfe-4113-98f1-65e335396b93" name="Changes" comment="Maven and JUnit">
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/exception/ProductNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Clothing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Electronics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Size.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/repository/CartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/repository/CartRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/service/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/service/CartServiceImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ust/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ust/CalculatorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,10 +1,8 @@
-package ecomapp;
+package ecomapp.repository;
 
 import ecomapp.model.Clothing;
-import ecomapp.model.Electronics;
 import ecomapp.model.Product;
 import ecomapp.model.Size;
-import ecomapp.repository.CartRepositoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
