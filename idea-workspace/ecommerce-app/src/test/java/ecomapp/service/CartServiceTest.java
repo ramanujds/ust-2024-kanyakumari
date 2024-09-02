@@ -49,6 +49,27 @@ public class CartServiceTest {
     }
 
 
+    @Test
+    void testGetProductById() throws ProductNotFoundException {
+
+        // Given
+        int id = 1;
+        Product product = new Clothing(1, "T-Shirt", 2000, 10, Size.MEDIUM, "Cotton");
+
+
+        // When
+        Mockito.when(cartRepository.findProduct(id)).thenReturn(product);
+
+        // Then
+        Assertions.assertEquals(product,cartService.getProductById(id));
+
+        // Verify
+        Mockito.verify(cartRepository,Mockito.times(1)).findProduct(id);
+
+
+    }
+
+
 
 
 
