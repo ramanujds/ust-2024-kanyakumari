@@ -4,11 +4,15 @@ public class StringExample {
 
     public static void main(String[] args) {
 
+        System.out.println("Total Processors : "+Runtime.getRuntime().availableProcessors());
+
        String str = "UST Global";
 
        String str2 = " Trivandrum";
 
        str = str.concat(str2);
+
+
 
         System.out.println(str);
 
