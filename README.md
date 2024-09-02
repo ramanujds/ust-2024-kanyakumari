@@ -2,6 +2,10 @@
 
 ## Welcome to UST
 
+## Assessment Link
+
+- https://forms.gle/Le4jS5YtPUSLiKSRA
+
 ## Day 1 - Aug-19-2024
 
 ### **What Are We Going to Learn?**
