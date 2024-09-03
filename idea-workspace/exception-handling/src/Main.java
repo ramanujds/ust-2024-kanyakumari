@@ -1,25 +1,25 @@
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Hello Everyone..");
+        System.out.println("Hey dudes..");
         System.out.println("We are doing some math operations : ");
         int a=10, b=0;
-        System.out.println("Trying a division operation : ");
-        if (b == 0) {
-            System.err.println("Cannot divide by zero");
-        } else {
+
+        try {
+            System.out.println("Division operation : ");
             int divOutput = a / b;
             System.out.println("Result of Division : " + divOutput);
         }
+        catch (ArithmeticException ex){
+            System.out.println(ex.getMessage());
+        }
 
-
-        System.out.println("Trying a multiplication operation : ");
+        System.out.println("Multiplication operation : ");
         int productOutput = a*b;
-        System.out.println("Result of Multiplication "+productOutput);
+        System.out.println("Result of Multiplication :"+productOutput);
 
         System.out.println("All Done");
         System.out.println("Bye...");
-
 
     }
 }

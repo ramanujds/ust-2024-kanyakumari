@@ -1,0 +1,2 @@
+Hello UST,
+We are writing data on a file using FileWriter
