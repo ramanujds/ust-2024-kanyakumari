@@ -228,3 +228,36 @@ END;
 -- execute the procedure
 
 EXEC getProjectsByStatus 'Not Started';
+
+-- create a procedure to get the trainees by project status
+
+CREATE PROCEDURE getTraineesByProjectStatus(@status CHAR(20))
+AS
+BEGIN
+SELECT name FROM trainee WHERE project_id in
+                (select id from project where status=@status);
+END;
+
+drop PROCEDURE getTraineesByProjectStatus
+
+EXEC getTraineesByProjectStatus 'Completed';
+
+-- Creating a Function
+
+CREATE FUNCTION CalculateExperience(@joinedDate DATE)
+RETURNS INT
+AS
+BEGIN
+DECLARE @experience INT;
+SET @experience = DATEDIFF(YEAR, @joinedDate, GETDATE());
+RETURN @experience;
+END;
+
+-- execute the function
+
+SELECT dbo.CalculateExperience('10-10-2024');
+
+SELECT name, date_joined, dbo.CalculateExperience(date_joined) as 'Experience' from trainee;
+
+
+
