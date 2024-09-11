@@ -2,9 +2,20 @@
 
 ## Welcome to UST
 
-## Assessment Link
+## MS SQL Server Installation
 
-- https://forms.gle/Le4jS5YtPUSLiKSRA
+### Docker Commands
+
+```bash
+docker pull mcr.microsoft.com/mssql/server
+```
+
+```bash
+docker run -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=MyStrongPass123" -e "MSSQL_PID=Developer" -e "MSSQL_USER=SA" -p 1433:1433 -d --name=sql mcr.microsoft.com/mssql/server
+```
+
+### Install Azure Data Studio
+
 
 ## Day 1 - Aug-19-2024
 
