@@ -308,3 +308,49 @@ SELECT * from trainee_backup;
 -- insert the deleted trainee back to the trainee table
 
 INSERT INTO trainee SELECT * FROM trainee_backup WHERE id=1;
+
+EXEC sp_columns trainee;
+
+BEGIN TRANSACTION;
+SAVE TRAN p1;
+
+delete from trainee;
+
+ROLLBACK TRANSACTION p1;
+COMMIT;
+
+
+
+-- exercise queries
+
+-- find the resturants with location
+
+-- id name location
+
+-- find the menu items with price
+
+-- name price categoty
+
+-- find the orders with order date
+
+-- id date rest_id item cust_id quantity total 
+
+-- find the orders in the month of january
+
+-- find most ordered item
+
+-- find the resturants with most orders
+
+-- find the resturants with most orders in the month of january
+
+-- find most ordered items of each resturant
+
+-- find customers who ordered in the month of january
+
+-- find the customers who ordered most
+
+-- top 5 ordered items
+
+-- top 5 resturants with most orders
+
+-- top 5 customers with most orders
