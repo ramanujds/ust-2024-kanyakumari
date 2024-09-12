@@ -259,5 +259,52 @@ SELECT dbo.CalculateExperience('10-10-2024');
 
 SELECT name, date_joined, dbo.CalculateExperience(date_joined) as 'Experience' from trainee;
 
+-- create an update trigger to ensure that the salary is not less than 5000
+
+CREATE TRIGGER update_trainee
+ON trainee
+FOR UPDATE
+AS
+BEGIN
+IF EXISTS (SELECT * FROM inserted WHERE salary < 5000)
+BEGIN
+RAISERROR ('Error: Salary cannot be negative', 16, 1);
+ROLLBACK TRANSACTION;
+END
+END;
 
 
+update trainee set salary=-100 where id=1;
+
+
+-- create a trigger to backup the trainee before delete
+
+-- delete trigger
+
+-- create a table trainee_backup
+
+-- create trigger backup_deleted_trainees before delete
+-- on trainees
+-- for each row
+-- begin
+-- 	INSERT INTO trainees_backup VALUES(OLD.id,OLD.trainee_name,OLD.email,OLD.location,OLD.laptop_id,OLD.dob,OLD.team_lead);  
+-- end
+
+-- convert this mysql trigger to sql server trigger
+
+CREATE table trainee_backup(id numeric(4),name varchar(50),location varchar(100), date_joined date, language varchar(30),project_id numeric(4),project_lead numeric(4), salary decimal(7,2));
+
+create trigger backup_deleted_trainees on trainee
+for delete
+as
+begin
+        INSERT INTO trainee_backup SELECT * FROM deleted;
+end;
+
+DELETE from trainee where id=1;
+
+SELECT * from trainee_backup;
+
+-- insert the deleted trainee back to the trainee table
+
+INSERT INTO trainee SELECT * FROM trainee_backup WHERE id=1;
