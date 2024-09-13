@@ -274,7 +274,31 @@ END
 END;
 
 
-update trainee set salary=-100 where id=1;
+-- raiseerror('message', severity, state)
+
+-- severity 0-10: Informational messages
+
+-- severity 11-16: Warnings
+
+-- severity 17-25: System errors
+
+-- severity 26-50: Fatal errors
+
+-- state: 1-255 : User defined state
+
+-- state 0: No state
+
+-- state 1: User defined state
+
+-- state 2: Foreign key constraint violation
+
+-- state 3: Primary key constraint violation
+
+-- state 4: Unique key constraint violation
+
+
+
+update trainee set salary=-500 where id=2;
 
 
 -- create a trigger to backup the trainee before delete
