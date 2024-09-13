@@ -15,10 +15,7 @@ public class TraineeRepositoryImpl implements TraineeRepository{
     public Trainee save(Trainee trainee) {
 
         Connection connection = JdbcConnectionUtil.createConnction();
-        String sql = """
-                insert into trainee(name,location,date_joined)
-                values(?,?,?)
-                """;
+        String sql = "insert into trainee(name,location,date_joined) values(?,?,?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -43,9 +40,7 @@ public class TraineeRepositoryImpl implements TraineeRepository{
 
         Connection connection = JdbcConnectionUtil.createConnction();
 
-        String sql = """
-                select * from trainee
-                """;
+        String sql = "select * from trainee";
 
         try {
             Statement statement = connection.createStatement();
