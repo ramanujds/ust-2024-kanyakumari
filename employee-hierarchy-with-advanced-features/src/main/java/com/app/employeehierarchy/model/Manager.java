@@ -1,4 +1,9 @@
 package com.app.employeehierarchy.model;
 
-public class Manager {
+public non-sealed class Manager extends Employee {
+
+    public void play(){
+
+    }
+
 }
