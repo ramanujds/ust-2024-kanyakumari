@@ -22,6 +22,10 @@ public class Main {
 //
         repository.getAllTrainees().forEach(t-> System.out.println(t));
 
+//        System.out.println(repository.getTrainee(1));
+
+//        Trainee trainee = new Trainee(5,"Javed","Bangalore",LocalDate.parse("2023-10-11"));
+//        repository.save(trainee);
 
     }
 }

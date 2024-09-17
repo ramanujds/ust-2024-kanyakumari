@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TraineeRepositoryImpl implements TraineeRepository{
+public class TraineeRepositoryImpl implements TraineeRepository {
 
 
     public Trainee save(Trainee trainee) {
@@ -17,13 +17,14 @@ public class TraineeRepositoryImpl implements TraineeRepository{
         Connection connection = JdbcConnectionUtil.createConnction();
         String sql = "insert into trainee(name,location,date_joined) values(?,?,?)";
 
+
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,trainee.name());
-            statement.setString(2,trainee.location());
-            statement.setString(3,trainee.joinedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            statement.setString(1, trainee.name());
+            statement.setString(2, trainee.location());
+            statement.setDate(3, Date.valueOf(trainee.joinedDate()));
             int rowCount = statement.executeUpdate();
-            System.out.println(rowCount+" rows inserted");
+            System.out.println(rowCount + " rows inserted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +34,19 @@ public class TraineeRepositoryImpl implements TraineeRepository{
     }
 
     public Trainee getTrainee(int id) {
-        return null;
+        Connection connection = JdbcConnectionUtil.createConnction();
+        String sql = "select * from trainee where id=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet resultSet = ps.executeQuery();
+            Trainee trainee = getTraineeFromResultSet(resultSet);
+            return trainee;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public List<Trainee> getAllTrainees() {
@@ -45,15 +58,7 @@ public class TraineeRepositoryImpl implements TraineeRepository{
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            List<Trainee> trainees = new ArrayList<>();
-            while (resultSet.next()){
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                String location = resultSet.getString("location");
-                LocalDate joinedDate = resultSet.getDate("date_joined").toLocalDate();
-                Trainee trainee = new Trainee(id,name,location,joinedDate);
-                trainees.add(trainee);
-            }
+            List<Trainee> trainees = getTraineeListFromResultSet(resultSet);
             return trainees;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -63,4 +68,41 @@ public class TraineeRepositoryImpl implements TraineeRepository{
     public void deleteTrainee(int id) {
 
     }
+
+    public Trainee getTraineeFromResultSet(ResultSet resultSet) {
+        Trainee trainee = null;
+        try {
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String location = resultSet.getString("location");
+                LocalDate joinedDate = resultSet.getDate("date_joined").toLocalDate();
+                trainee = new Trainee(id, name, location, joinedDate);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return trainee;
+    }
+
+    public List<Trainee> getTraineeListFromResultSet(ResultSet resultSet) {
+        List<Trainee> trainees = new ArrayList<>();
+        try {
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String location = resultSet.getString("location");
+                LocalDate joinedDate = resultSet.getDate("date_joined").toLocalDate();
+                Trainee trainee = new Trainee(id, name, location, joinedDate);
+                trainees.add(trainee);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return trainees;
+    }
+
 }
+
+
+

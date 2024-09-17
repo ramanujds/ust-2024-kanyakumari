@@ -11,19 +11,22 @@ import java.util.List;
 
 public class CartServiceImpl implements CartService{
 
-    private CartRepository cartRepo = new CartRepositoryImpl();
+    private CartRepository cartRepo;
 
     public void addToCart(Product product) {
+        cartRepo = new CartRepositoryImpl();
 
         cartRepo.addProduct(product);
 
     }
 
     public List<Product> getCartItems() {
+        cartRepo = new CartRepositoryImpl();
         return cartRepo.getAllProducts();
     }
 
     public double calculateTotalPrice() {
+        cartRepo = new CartRepositoryImpl();
         List<Product> products = cartRepo.getAllProducts();
         double total = 0;
         for (Product p:products){
