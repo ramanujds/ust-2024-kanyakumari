@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,7 +69,7 @@ public class BookstoreServiceTest {
             // When
             // mock the repository
 
-            when(bookRepository.findById(1)).thenReturn(java.util.Optional.of(book));
+            when(bookRepository.findById(1)).thenReturn(Optional.of(book));
 
             // Then
             // check if the result is equal to the expected result

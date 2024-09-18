@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2034b5-3cfe-4113-98f1-65e335396b93" name="Changes" comment="Maven and JUnit">
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/exception/ProductNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Clothing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Electronics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/model/Size.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/repository/CartRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/repository/CartRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/service/CartService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ecommerce-app/src/main/java/ecomapp/service/CartServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2a2034b5-3cfe-4113-98f1-65e335396b93" name="Changes" comment="Maven and JUnit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,31 +20,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2lPSIetu0FlA8iO7ZfNqFgcjP46" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "JUnit.CalculatorTest.addTest.executor": "Run",
-    "JUnit.CalculatorTest.divideTest.executor": "Run",
-    "JUnit.CalculatorTest.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "Maven.junit-testing-demo [test].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalculatorTest.addTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalculatorTest.divideTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CalculatorTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.junit-testing-demo [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.CalculatorTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ust.App" />
