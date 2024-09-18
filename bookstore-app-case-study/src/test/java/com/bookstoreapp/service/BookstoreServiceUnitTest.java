@@ -182,7 +182,7 @@ public class BookstoreServiceUnitTest {
         // When
         // mock the repository
 
-        when(bookRepository.save(book)).thenReturn(book);
+        when(bookRepository.findById(1)).thenReturn(Optional.of(book));
 
         // Then
         // check if BookAlreadyExistsException is thrown
@@ -191,7 +191,7 @@ public class BookstoreServiceUnitTest {
         });
 
         // check if the method is called only once
-        verify(bookRepository, times(1)).save(book);
+        verify(bookRepository, times(1)).findById(1);
 
     }
 
