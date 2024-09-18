@@ -4,7 +4,6 @@ import com.bookstoreapp.exception.BookAlreadyExistsException;
 import com.bookstoreapp.exception.BookNotFoundException;
 import com.bookstoreapp.model.Book;
 import com.bookstoreapp.repository.BookRepository;
-import com.bookstoreapp.service.BookstoreServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,12 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class BookstoreServiceTest {
+public class BookstoreServiceUnitTest {
 
     @InjectMocks
     private BookstoreServiceImpl bookstoreService;
