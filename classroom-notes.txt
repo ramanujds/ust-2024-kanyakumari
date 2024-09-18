@@ -1,0 +1,150 @@
+Maven/Gradle
+
+Build Tool
+Dependency Management
+Project Structure
+Plugins
+
+
+
+Software Testing
+
+Unit Testing
+Integration Testing
+E2E Testing
+
+BeforeEach
+AfterEach
+BeforeAll
+AfterAll
+
+
+Day 12. Sep-02-2024
+
+Mockito
+
+Multi Threading
+
+
+
+Day 13. Sep-03-2024
+
+
+File Handling
+
+Byte Stream
+Character Streams
+NIO
+
+Blocking vs Non Blocking
+
+Serialization
+
+
+Day - 14 Sep-04-2024
+
+SonarQube
+Java 11-17 Features
+
+
+Day - 15 Sep-05-2024
+
+Java 17 Features
+
+
+
+Day - 16 Sep-05-2024
+
+SQL
+
+Database
+
+DBMS
+
+RDBMS
+
+MySQL
+Oracle
+SQLServer
+Postgres
+
+No-SQL Based -
+
+MongoDB
+AWS Dynamodb
+
+
+SQL Basics
+----------
+
+DDL
+- create
+- alter
+- drop
+- truncate
+
+
+DML
+
+- insert
+- update
+- delete
+
+
+DQL
+- select
+
+
+DCL
+
+- grant
+- revoke
+
+TCL
+
+- commit
+- rollback
+- savepoint
+
+
+
+docker pull mcr.microsoft.com/mssql/server
+
+
+docker run -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=MyStrongPass123" -e "MSSQL_PID=Developer" -e "MSSQL_USER=SA" -p 1433:1433 -d --name=sql mcr.microsoft.com/mssql/server
+
+
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=MyStrongPass123' -e 'MSSQL_PID=Developer' --cap-add SYS_PTRACE -p 1401:1433 -d --name sql mcr.microsoft.com/azure-sql-edge
+
+
+
+docker pull mysql
+
+docker stop mysql
+docker rm mysql
+
+
+docker run -p 3307:3306 -d -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE =ust_db --name mysql mysql
+
+
+docker ps
+
+docker exec -it mysql bash
+
+mysql -u root -p
+
+
+
+jdbc:postgresql://localhost:5432/postgres
+
+
+postgresql
+
+
+
+
+
+
+
+
+
