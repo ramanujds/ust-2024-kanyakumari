@@ -182,7 +182,7 @@ public class BookstoreServiceUnitTest {
         // When
         // mock the repository
 
-        when(bookRepository.save(book)).thenThrow(new BookAlreadyExistsException("Book already exists"));
+        when(bookRepository.save(book)).thenReturn(book);
 
         // Then
         // check if BookAlreadyExistsException is thrown
