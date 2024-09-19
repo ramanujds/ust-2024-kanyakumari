@@ -21,7 +21,7 @@
 **Topic**: Introduction to the Flexbox layout model.  
 **Demo**: Building a simple navigation bar with CSS Flexbox.
 
-## Team 5: Introduction to Semantic HTML
+## Team 5: Introduction to Semantic HTML, CSS Selectors
 **Topic**: Understanding Semantic HTML.  
 **Demo**: Creating a well-structured webpage with semantic elements like `<header>`, `<nav>`, `<article>`, and `<footer>`.
 
