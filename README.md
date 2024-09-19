@@ -12,9 +12,10 @@
 **Topic**: Focus on enhancing user interface (button styles, form layout, focus effects).  
 **Demo**: Styling a form with CSS for better layout and user interaction.
 
-## Team 3: HTML IFrames and Embedding Content
-**Topic**: Embedding external content with `<iframe>`.  
-**Demo**: Embedding a YouTube video or Google Maps into a webpage and styling it.
+## Team 3: CSS Positioning Techniques
+**Topic**: Overview of CSS positioning techniques (relative, absolute, fixed, sticky).  
+**Demo**: Building a simple webpage with a sticky header or floating elements.
+
 
 ## Team 4: Flexbox Layout Model
 **Topic**: Introduction to the Flexbox layout model.  
@@ -24,15 +25,15 @@
 **Topic**: Understanding Semantic HTML.  
 **Demo**: Creating a well-structured webpage with semantic elements like `<header>`, `<nav>`, `<article>`, and `<footer>`.
 
-## Team 6: CSS Positioning Techniques
-**Topic**: Overview of CSS positioning techniques (relative, absolute, fixed, sticky).  
-**Demo**: Building a simple webpage with a sticky header or floating elements.
+## Team 6: HTML IFrames and Embedding Content
+**Topic**: Embedding external content with `<iframe>`.  
+**Demo**: Embedding a YouTube video or Google Maps into a webpage and styling it.
 
-## Team 7: CSS Box Model
+## Team 7: CSS Box Model, Media Query
 **Topic**: Understanding the CSS Box Model (content, padding, border, margin).  
 **Demo**: Designing a card or section layout with proper padding, borders, and margins.
 
-## Team 8: CSS Units and Float Property
+## Team 8: CSS Units and Float Property, Transition
 **Topic**: Exploring CSS units (`px`, `em`, `rem`, `%`) and the float property.  
 **Demo**: Creating a simple page and adjusting the font size using different units, and creating a basic layout with floated elements.
 
