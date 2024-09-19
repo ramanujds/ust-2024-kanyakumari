@@ -2,6 +2,42 @@
 
 ## Welcome to UST
 
+## Team Assignments
+
+## Team 1: HTML Forms
+**Topic**: HTML Forms: Input types, labels, buttons, and form structure.  
+**Demo**: Creating an HTML Form and adding validations.
+
+## Team 2: Styling Forms with CSS
+**Topic**: Focus on enhancing user interface (button styles, form layout, focus effects).  
+**Demo**: Styling a form with CSS for better layout and user interaction.
+
+## Team 3: HTML IFrames and Embedding Content
+**Topic**: Embedding external content with `<iframe>`.  
+**Demo**: Embedding a YouTube video or Google Maps into a webpage and styling it.
+
+## Team 4: Flexbox Layout Model
+**Topic**: Introduction to the Flexbox layout model.  
+**Demo**: Building a simple navigation bar with CSS Flexbox.
+
+## Team 5: Introduction to Semantic HTML
+**Topic**: Understanding Semantic HTML.  
+**Demo**: Creating a well-structured webpage with semantic elements like `<header>`, `<nav>`, `<article>`, and `<footer>`.
+
+## Team 6: CSS Positioning Techniques
+**Topic**: Overview of CSS positioning techniques (relative, absolute, fixed, sticky).  
+**Demo**: Building a simple webpage with a sticky header or floating elements.
+
+## Team 7: CSS Box Model
+**Topic**: Understanding the CSS Box Model (content, padding, border, margin).  
+**Demo**: Designing a card or section layout with proper padding, borders, and margins.
+
+## Team 8: CSS Units and Float Property
+**Topic**: Exploring CSS units (`px`, `em`, `rem`, `%`) and the float property.  
+**Demo**: Creating a simple page and adjusting the font size using different units, and creating a basic layout with floated elements.
+
+
+
 ## MS SQL Server Installation
 
 ### Docker Commands
