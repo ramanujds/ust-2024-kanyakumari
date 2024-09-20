@@ -1,4 +1,3 @@
-
 ### 1. Views
 **Explanation**: Views are virtual tables that provide a way to simplify complex queries, encapsulate logic, and enhance security by restricting access to specific data.
 **Use Cases**:
@@ -270,3 +269,179 @@ BEGIN TRANSACTION;
 COMMIT;
 ```
 This command sets the isolation level
+
+
+## Query optimization for improving the performance of SQL queries. 
+
+## Here are some key techniques and best practices:
+
+### 1. Indexing
+**Explanation**: Indexes are used to speed up the retrieval of rows by using pointers. They are created on columns that are frequently used in WHERE clauses, joins, and sorting operations.
+**Use Cases**:
+- **Primary Key Index**: Automatically created on primary key columns.
+- **Unique Index**: Ensures the uniqueness of values in one or more columns.
+- **Composite Index**: Created on multiple columns to improve performance on queries involving those columns.
+
+**Example**:
+```sql
+CREATE INDEX idx_location ON Trainee(location);
+```
+This index improves the performance of queries filtering by the `location` column.
+
+### 2. Avoiding SELECT *
+**Explanation**: Using `SELECT *` retrieves all columns, which can be inefficient if only a few columns are needed.
+**Use Cases**:
+- Reducing the amount of data transferred.
+- Improving query performance by selecting only necessary columns.
+
+**Example**:
+```sql
+SELECT name, location FROM Trainee WHERE location = 'Hyderabad';
+```
+This query retrieves only the `name` and `location` columns, reducing overhead.
+
+### 3. Using Joins Instead of Subqueries
+**Explanation**: Joins are generally more efficient than subqueries because they allow the database engine to optimize the query execution plan better.
+**Use Cases**:
+- Combining data from multiple tables.
+- Improving performance by reducing the number of nested queries.
+
+**Example**:
+```sql
+SELECT t.name, p.title
+FROM Trainee t
+JOIN Project p ON t.project_id = p.id;
+```
+This join retrieves trainee names and their project titles efficiently.
+
+### 4. Limiting the Number of Rows Returned
+**Explanation**: Using the `TOP` clause or `LIMIT` clause (depending on the SQL dialect) restricts the number of rows returned by a query.
+**Use Cases**:
+- Paginating results.
+- Reducing the load on the database server.
+
+**Example**:
+```sql
+SELECT TOP 10 name, location FROM Trainee ORDER BY date_joined DESC;
+```
+This query retrieves the top 10 most recently joined trainees.
+
+### 5. Using WHERE Clauses to Filter Data
+**Explanation**: Filtering data as early as possible in the query reduces the amount of data processed and improves performance.
+**Use Cases**:
+- Reducing the dataset size.
+- Improving query efficiency by filtering unnecessary data.
+
+**Example**:
+```sql
+SELECT name, location FROM Trainee WHERE location = 'Hyderabad';
+```
+This query filters trainees based on their location.
+
+### 6. Avoiding Wildcards at the Beginning of a LIKE Pattern
+**Explanation**: Using wildcards at the beginning of a `LIKE` pattern prevents the use of indexes, leading to full table scans.
+**Use Cases**:
+- Improving performance of string searches.
+- Ensuring efficient use of indexes.
+
+**Example**:
+```sql
+SELECT name FROM Trainee WHERE name LIKE 'A%';
+```
+This query efficiently searches for names starting with 'A'.
+
+### 7. Using Execution Plans
+**Explanation**: Execution plans show how SQL Server executes a query, including the steps and resources used. Analyzing execution plans helps identify performance bottlenecks.
+**Use Cases**:
+- Identifying inefficient query operations.
+- Optimizing query performance by understanding execution steps.
+
+**Example**:
+```sql
+-- To view the execution plan
+SET SHOWPLAN_ALL ON;
+GO
+SELECT * FROM Trainee;
+GO
+SET SHOWPLAN_ALL OFF;
+```
+This command enables the display of the execution plan for a query.
+
+### 8. Avoiding Too Many Joins
+**Explanation**: Excessive joins can lead to complex execution plans and slow performance. Simplifying joins or breaking down queries can improve performance.
+**Use Cases**:
+- Simplifying complex queries.
+- Reducing the load on the database server.
+
+**Example**:
+```sql
+SELECT t.name, p.title
+FROM Trainee t
+JOIN Project p ON t.project_id = p.id;
+```
+This query uses a single join to retrieve trainee names and their project titles.
+
+### 9. Using Appropriate Data Types
+**Explanation**: Choosing the right data types for columns can improve performance and reduce storage requirements.
+**Use Cases**:
+- Ensuring efficient storage.
+- Improving query performance by using appropriate data types.
+
+**Example**:
+```sql
+CREATE TABLE Trainee (
+    id INT,
+    name VARCHAR(50),
+    location VARCHAR(50),
+    date_joined DATE,
+    language VARCHAR(50),
+    project_id INT,
+    salary DECIMAL(10, 2)
+);
+```
+This table definition uses appropriate data types for each column.
+
+### 10. Analyzing and Updating Statistics
+**Explanation**: SQL Server uses statistics to estimate the number of rows in query results. Keeping statistics up-to-date helps the query optimizer make better decisions.
+**Use Cases**:
+- Improving query performance by providing accurate data distribution information.
+- Ensuring efficient query execution plans.
+
+**Example**:
+```sql
+-- Update statistics for a table
+UPDATE STATISTICS Trainee;
+```
+This command updates the statistics for the `Trainee` table.
+
+### 11. Using Query Hints Sparingly
+**Explanation**: Query hints can force specific behaviors in query execution. While they can improve performance in some cases, they should be used sparingly as they can also lead to suboptimal plans.
+**Use Cases**:
+- Forcing specific join types.
+- Controlling query execution behavior.
+
+**Example**:
+```sql
+SELECT name, location
+FROM Trainee WITH (NOLOCK)
+WHERE location = 'Hyderabad';
+```
+This query hint allows reading uncommitted data, which can improve performance but may lead to dirty reads.
+
+### 12. Monitoring and Tuning Regularly
+**Explanation**: Regular monitoring and tuning of queries help maintain optimal performance as data and usage patterns change.
+**Use Cases**:
+- Identifying and resolving performance issues.
+- Ensuring consistent query performance over time.
+
+**Example**:
+- **Using SQL Server Profiler**: To monitor query performance.
+- **Using Dynamic Management Views (DMVs)**: To analyze query performance and resource usage.
+
+
+Source: 
+(1) Query optimization techniques in SQL Server: the basics - SQL Shack. https://www.sqlshack.com/query-optimization-techniques-in-sql-server-the-basics/.
+(2) SQL Query Optimization: 12 Useful Performance Tuning Tips and Techniques. https://blog.devart.com/how-to-optimize-sql-query.html.
+(3) How to Improve SQL Query Performance: Expert Tips and Techniques. https://www.sql-easy.com/learn/how-to-improve-sql-query-performance/.
+(4) Optimizing SQL Queries for Performance: A Comprehensive Guide. https://blog.bytescrum.com/optimizing-sql-queries-for-performance-a-comprehensive-guide.
+(5) Optimizing SQL Queries: A Comprehensive Guide. https://www.sql-easy.com/learn/optimizing-sql-queries/.
