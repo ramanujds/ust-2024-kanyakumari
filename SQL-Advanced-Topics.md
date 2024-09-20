@@ -439,9 +439,121 @@ This query hint allows reading uncommitted data, which can improve performance b
 - **Using Dynamic Management Views (DMVs)**: To analyze query performance and resource usage.
 
 
+### Sources: 
+1. Query optimization techniques in SQL Server: the basics - SQL Shack. https://www.sqlshack.com/query-optimization-techniques-in-sql-server-the-basics/.
+2. SQL Query Optimization: 12 Useful Performance Tuning Tips and Techniques. https://blog.devart.com/how-to-optimize-sql-query.html.
+3. How to Improve SQL Query Performance: Expert Tips and Techniques. https://www.sql-easy.com/learn/how-to-improve-sql-query-performance/.
+4. Optimizing SQL Queries for Performance: A Comprehensive Guide. https://blog.bytescrum.com/optimizing-sql-queries-for-performance-a-comprehensive-guide.
+5. Optimizing SQL Queries: A Comprehensive Guide. https://www.sql-easy.com/learn/optimizing-sql-queries/.
+
+
+## Indexing in SQL Server
+
+**Indexing** is a crucial aspect of database performance optimization. Indexes help speed up the retrieval of rows by using pointers, much like an index in a book helps you quickly find information without reading the entire book.
+
+### Types of Indexes
+1. **Clustered Index**: 
+   - **Definition**: Sorts and stores the data rows of the table or view based on their key values. Each table can have only one clustered index.
+   - **Use Case**: Ideal for columns that are frequently used in range queries.
+   - **Example**:
+     ```sql
+     CREATE CLUSTERED INDEX idx_TraineeID ON Trainee(id);
+     ```
+
+2. **Non-Clustered Index**: 
+   - **Definition**: Contains a copy of part of the data from the table and a pointer to the actual data. Each table can have multiple non-clustered indexes.
+   - **Use Case**: Suitable for columns frequently used in search conditions.
+   - **Example**:
+     ```sql
+     CREATE NONCLUSTERED INDEX idx_TraineeLocation ON Trainee(location);
+     ```
+
+3. **Unique Index**: 
+   - **Definition**: Ensures that the values in the index key columns are unique.
+   - **Use Case**: Enforcing uniqueness on columns.
+   - **Example**:
+     ```sql
+     CREATE UNIQUE INDEX idx_TraineeEmail ON Trainee(email);
+     ```
+
+4. **Filtered Index**: 
+   - **Definition**: An optimized non-clustered index, especially useful for queries that select a small subset of data.
+   - **Use Case**: Indexing a subset of rows.
+   - **Example**:
+     ```sql
+     CREATE NONCLUSTERED INDEX idx_ActiveProjects ON Project(status) WHERE status = 'Active';
+     ```
+
+5. **Full-Text Index**: 
+   - **Definition**: Supports full-text queries against character-based data.
+   - **Use Case**: Searching large text columns.
+   - **Example**:
+     ```sql
+     CREATE FULLTEXT INDEX ON Trainee(name) KEY INDEX idx_TraineeID;
+     ```
+
+### Best Practices for Indexing
+1. **Analyze Data Usage**:
+   - Focus on indexing columns that are frequently used in queries, especially in WHERE clauses, JOIN conditions, and ORDER BY clauses².
+
+2. **Index Columns with High Cardinality**:
+   - High cardinality means the column has many unique values. Indexing such columns can significantly improve query performance³.
+
+3. **Avoid Over-Indexing**:
+   - While indexes speed up read operations, they can slow down write operations (INSERT, UPDATE, DELETE). Only create indexes that are necessary⁴.
+
+4. **Keep Indexes Narrow**:
+   - Indexes should be as narrow as possible to reduce storage space and improve performance. Avoid including unnecessary columns³.
+
+5. **Use Composite Indexes Wisely**:
+   - Composite indexes (indexes on multiple columns) can be very effective but should be used judiciously. The order of columns in the index is important².
+
+6. **Regularly Maintain Indexes**:
+   - Indexes can become fragmented over time. Regularly reorganize or rebuild indexes to maintain performance¹.
+
+7. **Monitor Index Usage**:
+   - Use SQL Server's dynamic management views (DMVs) to monitor index usage and identify unused or underused indexes².
+
+8. **Consider Indexing Strategies**:
+   - For large tables, consider partitioning indexes to improve performance and manageability⁴.
+
+### Example of Index Maintenance
+**Reorganizing an Index**:
+```sql
+ALTER INDEX idx_TraineeLocation ON Trainee REORGANIZE;
+```
+
+**Rebuilding an Index**:
+```sql
+ALTER INDEX idx_TraineeLocation ON Trainee REBUILD;
+```
+
+### Use Cases for Indexing
+1. **Improving Query Performance**:
+   - Indexes can drastically reduce the amount of data SQL Server needs to scan, improving query performance.
+   - **Example**: Searching for trainees in a specific location.
+     ```sql
+     SELECT * FROM Trainee WHERE location = 'Hyderabad';
+     ```
+
+2. **Enforcing Uniqueness**:
+   - Unique indexes ensure that no duplicate values are entered in the indexed columns.
+   - **Example**: Ensuring unique email addresses for trainees.
+     ```sql
+     CREATE UNIQUE INDEX idx_TraineeEmail ON Trainee(email);
+     ```
+
+3. **Supporting Full-Text Searches**:
+   - Full-text indexes allow for efficient searching of large text columns.
+   - **Example**: Searching for trainees by name.
+     ```sql
+     CREATE FULLTEXT INDEX ON Trainee(name) KEY INDEX idx_TraineeID;
+     ```
+
+
 Source: 
-(1) Query optimization techniques in SQL Server: the basics - SQL Shack. https://www.sqlshack.com/query-optimization-techniques-in-sql-server-the-basics/.
-(2) SQL Query Optimization: 12 Useful Performance Tuning Tips and Techniques. https://blog.devart.com/how-to-optimize-sql-query.html.
-(3) How to Improve SQL Query Performance: Expert Tips and Techniques. https://www.sql-easy.com/learn/how-to-improve-sql-query-performance/.
-(4) Optimizing SQL Queries for Performance: A Comprehensive Guide. https://blog.bytescrum.com/optimizing-sql-queries-for-performance-a-comprehensive-guide.
-(5) Optimizing SQL Queries: A Comprehensive Guide. https://www.sql-easy.com/learn/optimizing-sql-queries/.
+1. Top five considerations for SQL Server index design - SQL Shack. https://www.sqlshack.com/top-five-considerations-for-sql-server-index-design/.
+2. 10 SQL Server Index Best Practices - CLIMB. https://climbtheladder.com/10-sql-server-index-best-practices/.
+3. Optimizing SQL Server Performance: Best Practices for Indexing. https://www.sqlops.com/optimizing-sql-server-performance-best-practices-for-indexing/.
+4. Maintaining indexes optimally to improve performance and reduce .... https://learn.microsoft.com/en-us/sql/relational-databases/indexes/reorganize-and-rebuild-indexes?view=sql-server-ver16.
+5. SQL Server and Azure SQL index architecture and design guide. https://learn.microsoft.com/en-us/sql/relational-databases/sql-server-index-design-guide?view=sql-server-ver16.
