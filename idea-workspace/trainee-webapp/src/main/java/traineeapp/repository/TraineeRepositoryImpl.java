@@ -20,7 +20,7 @@ public class TraineeRepositoryImpl implements TraineeRepository {
 
     public Trainee getTrainee(int id) {
 
-        return trainees.stream().filter(trainee -> trainee.id() == id).findFirst().orElse(null);
+        return trainees.stream().filter(trainee -> trainee.getId() == id).findFirst().orElse(null);
 
 
     }

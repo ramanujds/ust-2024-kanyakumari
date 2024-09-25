@@ -15,26 +15,36 @@ public class Trainee {
         this.joinedDate = joinedDate;
     }
 
-    public Trainee(String name, String location, LocalDate joinedDate) {
-        this.name = name;
-        this.location = location;
-        this.joinedDate = joinedDate;
-    }
-
-    public int id() {
+    public int getId() {
         return id;
     }
 
-    public String name() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public String location() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation() {
         return location;
     }
 
-    public LocalDate joinedDate() {
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public LocalDate getJoinedDate() {
         return joinedDate;
+    }
+
+    public void setJoinedDate(LocalDate joinedDate) {
+        this.joinedDate = joinedDate;
     }
 
     @Override
