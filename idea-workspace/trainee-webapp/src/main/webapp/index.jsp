@@ -1,7 +1,8 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<form action="add-trainees" method="post">
+<p><a href="trainees/get">View Trainees</a></p>
+<form action="trainees/add" method="post">
 <input type="number" name="id" placeholder="Enter your id">
 <input type="text" name="name" placeholder="Enter your name">
 <input type="text" name="location" placeholder="Enter your location">
