@@ -32,6 +32,7 @@ public class TraineeRepositoryImpl implements TraineeRepository {
 
     public void deleteTrainee(int id) {
 
+        trainees.removeIf(trainee -> trainee.getId() == id);
     }
 
 

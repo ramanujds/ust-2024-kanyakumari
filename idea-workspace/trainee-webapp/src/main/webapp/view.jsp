@@ -1,5 +1,6 @@
 <%@ page import="traineeapp.model.Trainee" isELIgnored="false" %>
 <%@ page import="java.util.List" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +10,19 @@
 <body>
 <div class="container">
 <jsp:include page="header.jsp" />
-   <%
-   List<Trainee> trainees = (List<Trainee>) request.getAttribute("trainees");
-   out.println("<table class='table table-dark'><tr><th>ID</th><th>Name</th><th>Location</th><th>Joined Date</th></tr>");
-    for(Trainee trainee : trainees){
-        out.println("<tr><td>" + trainee.getId() + "</td><td>" + trainee.getName() + "</td><td>" + trainee.getLocation() + "</td><td>" + trainee.getJoinedDate() + "</td></tr>");
-    }
-    out.println("</table>");
+<c:forEach var="trainee" items="${trainees}">
+    <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${trainee.name}</h5>
+            <p class="card-text">ID: ${trainee.id}</p>
+            <p class="card-text">Location: ${trainee.location}</p>
+            <p class="card-text">Joined Date: ${trainee.joinedDate}</p>
+            <a href="trainees/delete?id=${trainee.id}" class="btn btn-danger">Delete</a>
+            </div>
+            </div>
+</c:forEach>
 
-   %>
    </div>
 </body>
 </html>
 
-<!--
-import
-class View{
-    service(){
-        out.println("<html>");
-        out.println("<head>");
-        .....
-        Trainee trainee = (Trainee) request.getAttribute("trainee");
-        out.println("<h2>Hello " + trainee.getName() + "!</h2>");
-
--->

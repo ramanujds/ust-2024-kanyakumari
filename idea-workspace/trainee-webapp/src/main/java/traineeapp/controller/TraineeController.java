@@ -39,18 +39,37 @@ public class TraineeController extends HttpServlet {
 
     }
 
+    private void deleteTrainee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        traineeRepository.deleteTrainee(id);
+        List<Trainee> trainees = traineeRepository.getAllTrainees();
+        request.setAttribute("trainees", trainees);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/view.jsp");
+        requestDispatcher.forward(request, response);
+    }
 
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String path = req.getRequestURI();
+        System.out.println(path);
+        if (path.contains("/get")) {
+            getTrainee(req, resp);
+        } else if (path.contains("/delete")) {
+            deleteTrainee(req, resp);
+
+        }
+
+
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String path = req.getRequestURI();
         System.out.println(path);
         if(path.contains("/add")) {
             addTrainee(req, resp);
-        } else if (path.contains("/get")) {
-            getTrainee(req, resp);
         }
-            
-        
 
 
     }
