@@ -1,0 +1,28 @@
+{
+  "trainees": [
+    {
+      "id": 1,
+      "name": "Gautham",
+      "location": "Bangalore",
+      "joinedDate": "2024-08-10"
+    },
+    {
+      "id": 2,
+      "name": "Sai",
+      "location": "Hyderabad",
+      "joinedDate": "2024-08-10"
+    },
+    {
+      "id": 3,
+      "name": "Lokesh",
+      "location": "Chennai",
+      "joinedDate": "2024-08-10"
+    },
+    {
+      "name": "Harsh",
+      "location": "Bangalore",
+      "joinedDate": "2022-10-15",
+      "id": 4
+    }
+  ]
+}

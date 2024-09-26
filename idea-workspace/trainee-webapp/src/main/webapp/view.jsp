@@ -10,7 +10,10 @@
 <body>
 <div class="container">
 <jsp:include page="header.jsp" />
+<div class="container">
+<div class="row">
 <c:forEach var="trainee" items="${trainees}">
+
     <div class="card mb-3" style="max-width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">${trainee.name}</h5>
@@ -21,6 +24,8 @@
             </div>
             </div>
 </c:forEach>
+</div>
+</row>
 
    </div>
 </body>

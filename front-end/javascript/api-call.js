@@ -11,6 +11,7 @@ async function fetchGithubUser(username){
     let data = await response.json();
     
     console.log(data)
+    return data;
 
 }   
 

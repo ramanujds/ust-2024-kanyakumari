@@ -6,14 +6,20 @@
     <title>Document</title>
     <script src="api-call.js"></script>
     <script>
-        function fetchUser(){
+        async function fetchUser(){
             let name = document.getElementById("username").value;
-            fetchGithubUser(name)
+            const user = await fetchGithubUser(name)
+            document.getElementById("uname").textContent=user.name; 
+            document.getElementById("userImg").src=user.avatar_url;  
         }
     </script>
 </head>
 <body>
     <input type="text" id="username" placeholder="Enter Github Username">
     <button onclick="fetchUser()">Fetch</button>
+    <div>
+        <p>Name : <span id="uname"></span></p>
+        <img id="userImg" width="100px" height="100px" style="float: left;" alt="Laoding..">
+    </div>
 </body>
 </html>
