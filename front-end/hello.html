@@ -9,6 +9,11 @@
             color: blue;
             font-size: 20px;
         }
+        footer{
+            min-height: 100px;
+            text-align: center;
+            background-color: cadetblue;
+        }
         </style>
 </head>
 <body>
@@ -85,5 +90,18 @@
     <img src="images/ust-4.jpeg" alt="Image Not Found" width="30%" height="30%">
     </div>
 
+    <footer>
+        <p>&copy;UST&trade;Global</p>
+        <p id="dateview"></p>
+    </footer>
+
 </body>
+<script>
+    function updateDateTime(){
+        document.getElementById('dateview').textContent=new Date().toLocaleString();
+    }
+
+    setInterval(updateDateTime, 1000)
+
+</script>
 </html>
