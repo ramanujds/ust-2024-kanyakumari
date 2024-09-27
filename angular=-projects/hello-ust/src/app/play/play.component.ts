@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Game } from '../model/Game';
 
 @Component({
   selector: 'app-play',
@@ -10,13 +11,10 @@ import { Component, Input } from '@angular/core';
 export class PlayComponent {
 
   @Input('game')
-  game:string='';
-
-  @Input('available')
-  available?:boolean;
+  game?:Game;
 
   show(){
-    alert("Let's Play "+this.game)
+    alert("Let's Play "+this.game?.name)
   }
 
 }

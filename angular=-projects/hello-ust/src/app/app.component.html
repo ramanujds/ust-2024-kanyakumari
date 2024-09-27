@@ -1,6 +1,22 @@
 <div class="container">
 <h1>Hello from UST</h1>
-<app-play game="Cricket" [available]="true"></app-play>
-<app-play game="Football" [available]="true"></app-play>
-<app-play game="Tennis" [available]="false"></app-play>
+<app-play [game]="{
+    name:'Cricket',
+    totalPlayers:11,
+    status:'Available'
+}"></app-play>
+
+<app-play [game]="{
+    name:'Football',
+    totalPlayers:11,
+    status:'Available'
+}"></app-play>
+
+<app-play [game]="{
+    name:'Tennis',
+    totalPlayers:2,
+    status:'Not-Available'
+}"></app-play>
+
+
 </div>
