@@ -1,6 +1,6 @@
 <div>
     <p>Game Name : {{game?.name}}</p>
     <p>Players Each Side : {{game?.totalPlayers}}</p>
-    <p>Status : {{[game?.status]}}</p>
-    <button (click)="show()" [disabled]="this.game?.status==='Not-Available'" class="btn btn-dark">Play</button>
+    <p>Status : {{Status[game?.status===Status.Available?0:1]}}</p>
+    <button (click)="show()" [disabled]="this.game?.status==Status.NotAvailable" class="btn btn-dark">Play</button>
 </div>

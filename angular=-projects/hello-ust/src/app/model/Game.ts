@@ -1,9 +1,9 @@
 export interface Game{
     name:string;
-    status:string;
+    status:Status;
     totalPlayers:number
 }
 
-// export enum Status{
-//     Available,Unavailable
-// }
+export enum Status{
+    Available,NotAvailable
+}
