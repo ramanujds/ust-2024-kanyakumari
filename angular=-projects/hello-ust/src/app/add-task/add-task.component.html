@@ -1,0 +1,23 @@
+<div class="col-12">
+<div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" class="form-control" id="id" name="id" #tid>
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" #tname>
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" name="description" #tdescription>
+    <label for="dueDate">Due Date</label>
+    <input type="date" class="form-control" id="dueDate" name="dueDate" #tduedate>
+    <label for="status">Status</label>
+   <select class="form-control" id="status" name="status" #tstatus>
+        <option value="0">Pending</option>
+        <option value="1">Completed</option>
+    </select>
+    <button class="btn btn-primary" (click)="addTask(tid.value,tname.value,tdescription.value,tduedate.value,tstatus.value)">Add Task</button>
+
+    
+</div>
+</div>
+<div class="col-12">
+    <app-view-task-list [taskList]="taskList"></app-view-task-list>
+</div>
