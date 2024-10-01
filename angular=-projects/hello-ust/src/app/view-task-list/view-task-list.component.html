@@ -1,3 +1,3 @@
 <div class="row">
-        <app-task-card *ngFor="let task of taskList" [task]="task"></app-task-card>
+        <app-task-card class="card col-6" *ngFor="let task of taskService.taskList" [task]="task" [ngClass]="task?.completed?'text-bg-light':'text-bg-warning'"></app-task-card>
 </div>

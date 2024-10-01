@@ -1,0 +1,14 @@
+{
+  "name": "javascript-unit-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Ramanuj Das",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^29.5.13"
+  }
+}

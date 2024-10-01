@@ -5,12 +5,13 @@ import { PlayComponent } from "./play/play.component";
 import { Game, Status } from './model/Game';
 import { CommonModule, NgForOf } from '@angular/common';
 import { AddTaskComponent } from "./add-task/add-task.component";
+import { ViewTaskListComponent } from "./view-task-list/view-task-list.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PlayComponent, AddTaskComponent],
+  imports: [RouterOutlet, PlayComponent, AddTaskComponent, ViewTaskListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
