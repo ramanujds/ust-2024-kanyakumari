@@ -5,7 +5,6 @@
    - **Mocha + Chai**: Mocha is a flexible test framework, while Chai provides assertion styles.
 
 2. **Write a Function to Test**: 
-   Let’s assume we want to test a function that adds two numbers.
 
    ```javascript
    // adder.js
@@ -22,16 +21,12 @@
 3. **Create Test Files**: 
    If you're using **Jest**, you can put your test files under a folder like `__tests__` or name the test file with a `.test.js` or `.spec.js` suffix.
 
-   ```bash
-   mkdir __tests__
-   ```
 
 4. **Write Unit Tests**: 
-   Below is an example using **Jest**.
-
+  
    - **Install Jest**:
      ```bash
-     npm install --save-dev jest
+     npm i --save-dev @types/jest
      ```
 
    - **Write the Test**: Create a test file, e.g., `adder.test.js`.
@@ -65,24 +60,7 @@
      ```bash
      npm test
      ```
-
-6. **Check Test Output**: 
-   Jest will run all the tests and report success or failure. The output might look like this:
-
-   ```bash
-   PASS  __tests__/adder.test.js
-     ✓ adds 1 + 2 to equal 3 (5ms)
-     ✓ adds 5 + 7 to equal 12 (1ms)
-     ✓ throws error when inputs are not numbers (2ms)
-
-   Test Suites: 1 passed, 1 total
-   Tests:       3 passed, 3 total
-   ```
-
-### Key Considerations
-- **Test edge cases**: Ensure you cover different scenarios like invalid inputs, edge values (e.g., very large numbers, negative numbers), and more.
-- **Isolate dependencies**: If your function relies on external dependencies (e.g., database or API calls), mock those dependencies to isolate the unit under test.
-- **Follow a descriptive test structure**: Use `describe` blocks for grouping related tests and make your test names descriptive enough so they explain what is being tested.
+   
 
 ### Example with Mocha + Chai
 
