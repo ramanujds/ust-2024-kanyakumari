@@ -10,6 +10,8 @@ public class Sim {
     @Autowired
     private Network network;
 
+    private String providerName;
+
     public void call(String phnNo){
         if (network.isAvailable())
             System.out.println("Calling "+phnNo);
