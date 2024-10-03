@@ -1,7 +1,10 @@
 package com.ust.traineeapp.repository;
 
 import com.ust.traineeapp.model.Trainee;
-import com.ust.traineeapp.util.JdbcConnectionUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -9,12 +12,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
+@Primary
 public class TraineeRepositoryImpl implements TraineeRepository {
 
+    @Autowired
+    @Qualifier("postgres")
+    private Connection connection;
 
     public Trainee save(Trainee trainee) {
 
-        Connection connection = JdbcConnectionUtil.createConnction();
         String sql = "insert into trainee(name,location,date_joined) values(?,?,?)";
 
 
@@ -34,7 +41,7 @@ public class TraineeRepositoryImpl implements TraineeRepository {
     }
 
     public Trainee getTrainee(int id) {
-        Connection connection = JdbcConnectionUtil.createConnction();
+
         String sql = "select * from trainee where id=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -51,7 +58,7 @@ public class TraineeRepositoryImpl implements TraineeRepository {
 
     public List<Trainee> getAllTrainees() {
 
-        Connection connection = JdbcConnectionUtil.createConnction();
+
 
         String sql = "select * from trainee";
 
