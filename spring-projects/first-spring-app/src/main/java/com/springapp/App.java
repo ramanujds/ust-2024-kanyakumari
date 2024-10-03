@@ -14,5 +14,8 @@ public class App
         String phnNo = "7826282929";
         phone.call(phnNo);
         phone.sendText(phnNo,"Hello.. When are you reaching?");
+
+        System.out.println("Phone Details : ");
+        System.out.println(phone);
     }
 }
