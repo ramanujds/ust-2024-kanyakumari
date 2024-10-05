@@ -7,9 +7,19 @@
 <body>
 
 <h2>Hello Sir/Mam,</h2>
-<form action="hello" method="post">
-  <label>Please enter you name<label>
-  <input type="text" name="username">
+<form action="add-trainee" method="post">
+  <div>
+    <label>ID<label>
+    <input type="number" name="id">
+  </div>
+  <div>
+      <label>Name<label>
+      <input type="text" name="name">
+  </div>
+  <div>
+        <label>Location<label>
+        <input type="text" name="location">
+    </div>
   <button type="submit">Submit</button>
  </form>
 
