@@ -11,7 +11,7 @@ public class Network {
         this.available = available;
     }
     public Network() {
-
+        System.out.println("Network Bean Created");
     }
 
     public boolean isAvailable() {

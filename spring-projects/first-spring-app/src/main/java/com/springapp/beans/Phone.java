@@ -3,16 +3,21 @@ package com.springapp.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.StringJoiner;
 
 @Component
+@Scope
 public class Phone {
 
 
+    public Phone(){
+        System.out.println("Phone Bean Created");
+    }
 
-    @Autowired
+    @Autowired(required = false)
     private Sim sim;
 
     @Value("${phone.brand}")
@@ -50,8 +55,7 @@ public class Phone {
         this.price = price;
     }
 
-    public Phone() {
-    }
+
 
     public Phone(Sim sim) {
         this.sim = sim;

@@ -10,6 +10,7 @@ public class App
     public static void main( String[] args )
     {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
         Phone phone = context.getBean(Phone.class);
         String phnNo = "7826282929";
         phone.call(phnNo);
@@ -17,5 +18,7 @@ public class App
 
         System.out.println("Phone Details : ");
         System.out.println(phone);
+        Phone phone2 = context.getBean(Phone.class);
+        Phone phone3 = context.getBean(Phone.class);
     }
 }

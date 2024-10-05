@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Sim {
+
+    public Sim() {
+        System.out.println("Sim Bean Created");
+    }
 
     @Autowired
     private Network network;
