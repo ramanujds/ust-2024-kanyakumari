@@ -27,5 +27,11 @@ public class AppController {
         return "index.jsp";
     }
 
+    @GetMapping("/api")
+    public String getSwaggerApi(){
+        return "/swagger-ui.html";
+    }
+
+
 
 }
