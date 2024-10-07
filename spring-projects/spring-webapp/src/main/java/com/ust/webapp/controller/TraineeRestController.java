@@ -29,4 +29,21 @@ public class TraineeRestController {
         return traineeService.save(trainee);
     }
 
+
+    @PutMapping("/{id}")
+    public Trainee updateTrainee(@PathVariable int id,@RequestBody Trainee trainee){
+        return traineeService.updateTrainee(id,trainee);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTrainee(@PathVariable int id){
+        traineeService.deleteTrainee(id);
+    }
+
+    @GetMapping("/search")
+    public Trainee findTraineeByName(@RequestParam("name") String name)
+    {
+        return traineeService.findTraineeByName(name);
+    }
+
 }

@@ -37,4 +37,15 @@ public class TraineeRepositoryImpl implements TraineeRepository {
     public void deleteTrainee(int id) {
         traineeList.removeIf(t->t.id()==id);
     }
+
+    public Trainee updateTrainee(int id, Trainee trainee) {
+        deleteTrainee(id);
+        Trainee newTrainee = new Trainee(id,trainee.name(),trainee.location());
+        return  save(newTrainee);
+    }
+
+    public Trainee getTraineeByName(String name){
+        return traineeList.stream().filter(t->t.name().toLowerCase().contains(name.toLowerCase())).findFirst().get();
+    }
+    
 }

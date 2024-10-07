@@ -14,4 +14,8 @@ public interface TraineeRepository {
 
     public void deleteTrainee(int id);
 
+    public Trainee getTraineeByName(String name);
+
+    public Trainee updateTrainee(int id, Trainee trainee);
+
 }

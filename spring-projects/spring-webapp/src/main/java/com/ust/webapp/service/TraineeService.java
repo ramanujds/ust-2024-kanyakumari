@@ -13,4 +13,10 @@ public interface TraineeService {
     public List<Trainee> getAllTrainees();
 
     public void deleteTrainee(int id);
+
+    public Trainee findTraineeByName(String name);
+
+    public Trainee updateTrainee(int id, Trainee trainee);
+
+
 }

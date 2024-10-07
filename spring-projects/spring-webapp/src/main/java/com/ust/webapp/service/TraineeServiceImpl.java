@@ -27,4 +27,14 @@ public class TraineeServiceImpl implements TraineeService{
     public void deleteTrainee(int id) {
         traineeRepo.deleteTrainee(id);
     }
+
+    public Trainee findTraineeByName(String name) {
+        return traineeRepo.getTraineeByName(name);
+    }
+
+    public Trainee updateTrainee(int id, Trainee trainee) {
+        return traineeRepo.updateTrainee(id,trainee);
+    }
+
+
 }
