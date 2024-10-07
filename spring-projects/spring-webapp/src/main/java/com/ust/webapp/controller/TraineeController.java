@@ -32,7 +32,7 @@ public class TraineeController {
     }
 
     @GetMapping("/view-all")
-    public String ciewAllTrainees(Model m){
+    public String viewAllTrainees(Model m){
         var trainees = traineeService.getAllTrainees();
         m.addAttribute("trainees",trainees);
         return "view-all.jsp";
