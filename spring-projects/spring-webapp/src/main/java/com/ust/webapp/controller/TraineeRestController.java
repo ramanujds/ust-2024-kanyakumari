@@ -1,5 +1,6 @@
 package com.ust.webapp.controller;
 
+import com.ust.webapp.dto.TraineeDto;
 import com.ust.webapp.model.Trainee;
 import com.ust.webapp.service.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +19,20 @@ public class TraineeRestController {
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public Trainee getTrainee(@PathVariable("id") int id){
+    public TraineeDto getTrainee(@PathVariable("id") int id){
         return traineeService.getTrainee(id);
     }
 
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    public List<Trainee> getAllTrainees(){
+    public List<TraineeDto> getAllTrainees(){
         return traineeService.getAllTrainees();
     }
 
     @PostMapping
 //    @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<Trainee> saveTrainee(@RequestBody Trainee trainee){
-        Trainee savedTrainee = traineeService.save(trainee);
+    public ResponseEntity<TraineeDto> saveTrainee(@RequestBody TraineeDto trainee){
+        TraineeDto savedTrainee = traineeService.save(trainee);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTrainee);
 
     }
@@ -39,7 +40,7 @@ public class TraineeRestController {
 
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public Trainee updateTrainee(@PathVariable int id,@RequestBody Trainee trainee){
+    public TraineeDto updateTrainee(@PathVariable int id,@RequestBody TraineeDto trainee){
         return traineeService.updateTrainee(id,trainee);
     }
 
@@ -51,7 +52,7 @@ public class TraineeRestController {
 
     @GetMapping("/search")
     @ResponseStatus(code = HttpStatus.OK)
-    public Trainee findTraineeByName(@RequestParam("name") String name)
+    public TraineeDto findTraineeByName(@RequestParam("name") String name)
     {
         return traineeService.findTraineeByName(name);
     }

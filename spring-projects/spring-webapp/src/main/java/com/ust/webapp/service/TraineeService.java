@@ -1,22 +1,23 @@
 package com.ust.webapp.service;
 
+import com.ust.webapp.dto.TraineeDto;
 import com.ust.webapp.model.Trainee;
 
 import java.util.List;
 
 public interface TraineeService {
 
-    public Trainee save(Trainee trainee);
+    public TraineeDto save(TraineeDto trainee);
 
-    public Trainee getTrainee(int id);
+    public TraineeDto getTrainee(int id);
 
-    public List<Trainee> getAllTrainees();
+    public List<TraineeDto> getAllTrainees();
 
     public void deleteTrainee(int id);
 
-    public Trainee findTraineeByName(String name);
+    public TraineeDto findTraineeByName(String name);
 
-    public Trainee updateTrainee(int id, Trainee trainee);
+    public TraineeDto updateTrainee(int id, TraineeDto trainee);
 
 
 }

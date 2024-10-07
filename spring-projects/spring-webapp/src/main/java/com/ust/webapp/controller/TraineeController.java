@@ -1,5 +1,6 @@
 package com.ust.webapp.controller;
 
+import com.ust.webapp.dto.TraineeDto;
 import com.ust.webapp.model.Trainee;
 import com.ust.webapp.service.TraineeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +19,15 @@ public class TraineeController {
 
 
     @PostMapping("/add-trainee")
-    public String addTrainee(@ModelAttribute Trainee trainee, Model m){
-        Trainee savedTrainee = traineeService.save(trainee);
+    public String addTrainee(@ModelAttribute TraineeDto trainee, Model m){
+        TraineeDto savedTrainee = traineeService.save(trainee);
         m.addAttribute("trainee",savedTrainee);
         return "view-trainee.jsp";
     }
 
     @GetMapping("/search-trainee")
     public String getTrainee(@RequestParam("id") int id, Model m){
-        Trainee trainee = traineeService.getTrainee(id);
+        TraineeDto trainee = traineeService.getTrainee(id);
         m.addAttribute("trainee",trainee);
         return "view-trainee.jsp";
     }

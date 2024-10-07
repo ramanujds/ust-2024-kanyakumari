@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class TraineeRepositoryImpl implements TraineeRepository {
 
@@ -26,8 +28,8 @@ public class TraineeRepositoryImpl implements TraineeRepository {
         return trainee;
     }
 
-    public Trainee getTrainee(int id) {
-        return traineeList.stream().filter(t->t.id()==id).findFirst().get();
+    public Optional<Trainee> getTrainee(int id) {
+        return traineeList.stream().filter(t->t.getId()==id).findFirst();
     }
 
     public List<Trainee> getAllTrainees() {
@@ -35,17 +37,18 @@ public class TraineeRepositoryImpl implements TraineeRepository {
     }
 
     public void deleteTrainee(int id) {
-        traineeList.removeIf(t->t.id()==id);
+        traineeList.removeIf(t->t.getId()==id);
     }
 
     public Trainee updateTrainee(int id, Trainee trainee) {
-        deleteTrainee(id);
-        Trainee newTrainee = new Trainee(id,trainee.name(),trainee.location());
-        return  save(newTrainee);
+        Trainee savedTrainee = getTrainee(id).orElseThrow();
+        savedTrainee.setName(trainee.getName());
+        savedTrainee.setLocation(trainee.getLocation());
+        return savedTrainee;
     }
 
-    public Trainee getTraineeByName(String name){
-        return traineeList.stream().filter(t->t.name().toLowerCase().contains(name.toLowerCase())).findFirst().get();
+    public Optional<Trainee> getTraineeByName(String name){
+        return traineeList.stream().filter(t->t.getName().toLowerCase().contains(name.toLowerCase())).findFirst();
     }
-    
+
 }
