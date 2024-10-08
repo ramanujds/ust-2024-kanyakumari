@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = {"http://127.0.0.1:5500"})
 @RestController
 @RequestMapping("/api/v1/trainees")
 public class TraineeController {
@@ -47,12 +48,12 @@ public class TraineeController {
         traineeService.deleteTrainee(id);
     }
 
-//    @GetMapping("/search")
-//    @ResponseStatus(code = HttpStatus.OK)
-//    public Trainee findTraineeByName(@RequestParam("name") String name)
-//    {
-//        return traineeService.findTraineeByName(name);
-//    }
+    @GetMapping("/search")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Trainee findTraineeByName(@RequestParam("name") String name)
+    {
+        return traineeService.findTraineeByName(name);
+    }
 
 
 }

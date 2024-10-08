@@ -31,4 +31,10 @@ public class TraineeServiceImpl implements TraineeService{
     public Trainee updateTrainee(Trainee trainee) {
         return traineeRepo.save(trainee);
     }
+
+    public Trainee findTraineeByName(String name) {
+        return traineeRepo.findByName(name).orElse(null);
+    }
+
+
 }

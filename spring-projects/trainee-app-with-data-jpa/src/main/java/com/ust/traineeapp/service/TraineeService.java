@@ -17,4 +17,6 @@ public interface TraineeService {
 
     Trainee updateTrainee(Trainee trainee);
 
+    Trainee findTraineeByName(String name);
+
 }
