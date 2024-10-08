@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000/trainees";
+const baseUrl = "http://localhost:8000/api/v1/trainees";
 
 async function getTrainees() {
     const response = await fetch(baseUrl);

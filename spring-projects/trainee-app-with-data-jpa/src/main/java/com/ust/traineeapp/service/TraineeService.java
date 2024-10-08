@@ -15,7 +15,7 @@ public interface TraineeService {
 
     List<Trainee> getAllTrainees();
 
-    Trainee updateTrainee(Trainee trainee);
+    Trainee updateTrainee(int id,Trainee trainee);
 
     Trainee findTraineeByName(String name);
 

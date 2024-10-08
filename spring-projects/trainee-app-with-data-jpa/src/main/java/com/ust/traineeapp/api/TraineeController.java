@@ -39,7 +39,7 @@ public class TraineeController {
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
     public Trainee updateTrainee(@PathVariable int id,@RequestBody Trainee trainee){
-        return traineeService.updateTrainee(trainee);
+        return traineeService.updateTrainee(id,trainee);
     }
 
     @DeleteMapping("/{id}")

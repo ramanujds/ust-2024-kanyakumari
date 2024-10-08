@@ -13,6 +13,9 @@ public class TraineeServiceImpl implements TraineeService{
     private TraineeRepository traineeRepo;
 
     public Trainee saveTrainee(Trainee trainee) {
+        if(traineeRepo.existsById(trainee.getId())){
+            throw new RuntimeException("Trainee with ID "+trainee.getId()+" Already Present");
+        }
         return traineeRepo.save(trainee);
     }
 
@@ -28,8 +31,21 @@ public class TraineeServiceImpl implements TraineeService{
         return traineeRepo.findAll();
     }
 
-    public Trainee updateTrainee(Trainee trainee) {
-        return traineeRepo.save(trainee);
+    public Trainee updateTrainee(int id, Trainee trainee) {
+        if (!traineeRepo.existsById(id)){
+            throw new RuntimeException("Trainee with ID "+id+" Not Found");
+        }
+        Trainee traineeToUpdate = getTraineeById(id);
+        if(trainee.getName()!=null){
+            traineeToUpdate.setName(trainee.getName());
+        }
+        if(trainee.getLocation()!=null){
+            traineeToUpdate.setLocation(trainee.getLocation());
+        }
+        if(trainee.getJoinedDate()!=null){
+            traineeToUpdate.setJoinedDate(trainee.getJoinedDate());
+        }
+        return traineeRepo.save(traineeToUpdate);
     }
 
     public Trainee findTraineeByName(String name) {
