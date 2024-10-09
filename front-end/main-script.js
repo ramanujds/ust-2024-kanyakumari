@@ -38,7 +38,10 @@ getTrainees().then(response => {
             <div class="card-body">
                 <p>Location: ${trainee.location}</p>
                 <p>Joined Date: ${trainee.joinedDate}</p>
+                <p><button class='btn btn-danger'>Delete</button>
+                | <button class='btn btn-info' onclick='viewUpdateForm()'>Update</button></p>
             </div>
+    
         `;
         col.appendChild(traineeCard);
         row.appendChild(col);
@@ -50,19 +53,34 @@ getTrainees().then(response => {
 });
 }
 
+function viewUpdateForm(){
+
+    let addTraineeForm = document.getElementById('add-trainee-form');
+    let traineesCardSection = document.getElementById('trainees-card-section');
+    let trainneUpdateForm = document.getElementById('update-trainee-form');
+    addTraineeForm.hidden = true;
+    traineesCardSection.hidden = false;
+    trainneUpdateForm.hidden=false;
+
+}
 
 function showAddTraineeForm() {
     let addTraineeForm = document.getElementById('add-trainee-form');
     let traineesCardSection = document.getElementById('trainees-card-section');
+    let trainneUpdateForm = document.getElementById('update-trainee-form');
     addTraineeForm.hidden = false;
     traineesCardSection.hidden = true;
+    trainneUpdateForm.hidden=true;
 }
 
 function showTrainees() {
     let addTraineeForm = document.getElementById('add-trainee-form');
     let traineesCardSection = document.getElementById('trainees-card-section');
+    let trainneUpdateForm = document.getElementById('update-trainee-form');
     loadTrainees();
     addTraineeForm.hidden = true;
     traineesCardSection.hidden = false;
+    trainneUpdateForm.hidden=true;
+
 }
 

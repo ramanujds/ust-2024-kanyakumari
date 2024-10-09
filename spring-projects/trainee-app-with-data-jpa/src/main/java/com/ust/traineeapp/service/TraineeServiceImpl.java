@@ -1,6 +1,8 @@
 package com.ust.traineeapp.service;
 
+import com.ust.traineeapp.model.Project;
 import com.ust.traineeapp.model.Trainee;
+import com.ust.traineeapp.repository.ProjectRepository;
 import com.ust.traineeapp.repository.TraineeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,20 @@ public class TraineeServiceImpl implements TraineeService{
     @Autowired
     private TraineeRepository traineeRepo;
 
+    @Autowired
+    private ProjectRepository projectRepository;
+
     public Trainee saveTrainee(Trainee trainee) {
+
         if(traineeRepo.existsById(trainee.getId())){
             throw new RuntimeException("Trainee with ID "+trainee.getId()+" Already Present");
         }
-        return traineeRepo.save(trainee);
+        Trainee savedTrainee = traineeRepo.save(trainee);
+        Project project = savedTrainee.getProject();
+        project.setTrainee(savedTrainee);
+        projectRepository.save(project);
+        return savedTrainee;
+
     }
 
     public Trainee getTraineeById(int id) {

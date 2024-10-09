@@ -19,4 +19,6 @@ public class Trainee {
     private String location;
     @Column(name = "joined_date")
     private LocalDate joinedDate;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Project project;
 }
