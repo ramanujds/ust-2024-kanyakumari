@@ -23,13 +23,16 @@ public class TraineeServiceImpl implements TraineeService{
         if(traineeRepo.existsById(trainee.getId())){
             throw new RuntimeException("Trainee with ID "+trainee.getId()+" Already Present");
         }
-        Project project = projectRepository.findById(trainee.getProject().getId()).orElse(null);
-        Trainee savedTrainee;
-        if (project != null) {
-            trainee.setProject(project);
-            savedTrainee = traineeRepo.save(trainee);
-            project.getTrainees().add(savedTrainee);
-            projectRepository.save(project);
+        Trainee savedTrainee = null;
+        if(trainee.getProject()!=null) {
+            Project project = projectRepository.findById(trainee.getProject().getId()).orElse(null);
+
+            if (project != null) {
+                trainee.setProject(project);
+                savedTrainee = traineeRepo.save(trainee);
+                project.getTrainees().add(savedTrainee);
+                projectRepository.save(project);
+            }
         }
         else {
             savedTrainee = traineeRepo.save(trainee);
