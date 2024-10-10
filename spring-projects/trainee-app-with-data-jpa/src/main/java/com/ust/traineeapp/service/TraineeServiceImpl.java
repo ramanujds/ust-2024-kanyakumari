@@ -1,5 +1,6 @@
 package com.ust.traineeapp.service;
 
+import com.ust.traineeapp.exception.RecordNotFoundException;
 import com.ust.traineeapp.model.Project;
 import com.ust.traineeapp.model.Trainee;
 import com.ust.traineeapp.repository.ProjectRepository;
@@ -27,11 +28,15 @@ public class TraineeServiceImpl implements TraineeService{
         if(trainee.getProject()!=null) {
             Project project = projectRepository.findById(trainee.getProject().getId()).orElse(null);
 
+
             if (project != null) {
                 trainee.setProject(project);
                 savedTrainee = traineeRepo.save(trainee);
                 project.getTrainees().add(savedTrainee);
                 projectRepository.save(project);
+            }
+            else{
+                savedTrainee = traineeRepo.save(trainee);
             }
         }
         else {
@@ -44,7 +49,8 @@ public class TraineeServiceImpl implements TraineeService{
     }
 
     public Trainee getTraineeById(int id) {
-        return traineeRepo.findById(id).orElse(null);
+        return traineeRepo.findById(id)
+                .orElseThrow(()->new RecordNotFoundException("Trainee with ID "+id+ " Not Found"));
     }
 
     public void deleteTrainee(int id) {
