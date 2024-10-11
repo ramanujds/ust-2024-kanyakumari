@@ -11,6 +11,8 @@ The application should include a `Task` model with the following attributes:
 - **dueDate**: `LocalDate`
 - **status**: `enum` (`PENDING`, `COMPLETED`)
 
+**Any extra field you can add as per your need**
+
 ### **API Endpoints:**
 
 - **POST** `/api/v1/tasks`: Create a new task.
@@ -21,6 +23,7 @@ The application should include a `Task` model with the following attributes:
 - **PUT** `/api/v1/tasks/{id}`: Update a specific task by its ID.
 - **DELETE** `/api/v1/tasks/{id}`: Delete a specific task by its ID.
 - **GET** `/api/v1/tasks/sort`: Retrieve tasks sorted by due date
+- **GET** `/api/v1/tasks/deleted` : Retrieve all deleted tasks
 
 ### **Exception Handling:**
 Implement proper exception handling to manage cases such as:
