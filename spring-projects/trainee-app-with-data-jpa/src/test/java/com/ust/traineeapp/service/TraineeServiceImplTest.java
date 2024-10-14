@@ -34,7 +34,7 @@ class TraineeServiceImplTest {
         Trainee trainee = new Trainee(1,"Umesh","Gurgaon", LocalDate.now());
 
         // When
-        Mockito.when(traineeRepository.findById(id))
+        Mockito.when(traineeRepository.findById(Mockito.anyInt()))
                         .thenReturn(Optional.of(trainee));
 
         Mockito.when(traineeRepository.findById(invalidId))
