@@ -2,6 +2,7 @@ package com.ust.traineeapp.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.ust.traineeapp.exception.RecordNotFoundException;
 import com.ust.traineeapp.model.Trainee;
 import com.ust.traineeapp.service.TraineeService;
 import com.ust.traineeapp.service.TraineeServiceImpl;
@@ -40,9 +41,11 @@ class TraineeControllerTest {
         // Given
         Trainee trainee = new Trainee(1,"Harsh","Kerala", LocalDate.now());
         int id = 1;
+        int invalidId=100;
 
         // When
         Mockito.when(traineeService.getTraineeById(id)).thenReturn(trainee);
+        Mockito.when(traineeService.getTraineeById(invalidId)).thenThrow(new RecordNotFoundException(""));
 
         // Then
 
@@ -53,6 +56,10 @@ class TraineeControllerTest {
 				.andExpect(jsonPath("$.location", Matchers.is(trainee.getLocation())))
 				.andExpect(jsonPath("$.joinedDate", Matchers.is(trainee.getJoinedDate().format(DateTimeFormatter.ofPattern("dd/MMM/yyyy")))))
 				.andReturn();
+
+        mockMvc.perform(get("/api/v1/trainees/"+invalidId))
+                .andExpect(status().isNotFound())
+                .andReturn();
 
     }
 
