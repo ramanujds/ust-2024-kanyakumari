@@ -13,7 +13,11 @@ public interface TraineeRepository extends JpaRepository<Trainee,Integer> {
     @Query("from Trainee where name=:name")
     Optional<Trainee> findByName(String name);
 
-    List<Trainee> findByLocation(String location);
+    @Query(value = "select * from trainee_db where extract(month from joined_date)=:month and extract(year from joined_date)=:year",nativeQuery = true)
+    public List<Trainee> getAllByMonthAndYear(int month, int year);
 
+
+    @Query(name = "findByLocation")
+    public List<Trainee> findByLocation(String location);
 
 }

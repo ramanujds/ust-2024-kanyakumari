@@ -19,4 +19,5 @@ public interface TraineeService {
 
     Trainee findTraineeByName(String name);
 
+    List<Trainee> findTraineeByMonthAndYear(int month, int year);
 }

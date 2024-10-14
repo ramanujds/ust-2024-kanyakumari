@@ -55,5 +55,11 @@ public class TraineeController {
         return traineeService.findTraineeByName(name);
     }
 
+    @GetMapping("/month/{month}/year/{year}")
+    public List<Trainee> findTraineeByMonthAndYear(@PathVariable int month,
+                                                   @PathVariable int year){
+        return traineeService.findTraineeByMonthAndYear(month, year);
+    }
+
 
 }

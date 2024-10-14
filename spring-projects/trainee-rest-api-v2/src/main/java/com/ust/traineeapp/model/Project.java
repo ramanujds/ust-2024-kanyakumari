@@ -19,8 +19,7 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-//    @JsonIgnore
-//    private List<Trainee> trainees = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+    private List<Trainee> trainees = new ArrayList<>();
 
 }

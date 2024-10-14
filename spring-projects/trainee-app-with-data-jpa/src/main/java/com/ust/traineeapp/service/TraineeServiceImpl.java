@@ -25,23 +25,23 @@ public class TraineeServiceImpl implements TraineeService{
             throw new RuntimeException("Trainee with ID "+trainee.getId()+" Already Present");
         }
         Trainee savedTrainee = null;
-        if(trainee.getProject()!=null) {
-            Project project = projectRepository.findById(trainee.getProject().getId()).orElse(null);
+//        if(trainee.getProject()!=null) {
+//            Project project = projectRepository.findById(trainee.getProject().getId()).orElse(null);
+//
+//
+//            if (project != null) {
+//                trainee.setProject(project);
+//                savedTrainee = traineeRepo.save(trainee);
+//                project.getTrainees().add(savedTrainee);
+//                projectRepository.save(project);
+//            }
+//            else{
+//                savedTrainee = traineeRepo.save(trainee);
+//            }
+//        }
 
-
-            if (project != null) {
-                trainee.setProject(project);
-                savedTrainee = traineeRepo.save(trainee);
-                project.getTrainees().add(savedTrainee);
-                projectRepository.save(project);
-            }
-            else{
-                savedTrainee = traineeRepo.save(trainee);
-            }
-        }
-        else {
             savedTrainee = traineeRepo.save(trainee);
-        }
+
 
 
         return savedTrainee;
@@ -83,4 +83,7 @@ public class TraineeServiceImpl implements TraineeService{
     }
 
 
+    public List<Trainee> findTraineeByMonthAndYear(int month, int year) {
+        return traineeRepo.getAllByMonthAndYear(month,year);
+    }
 }

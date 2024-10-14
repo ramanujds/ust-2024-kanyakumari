@@ -32,10 +32,8 @@ public class TraineeApiErrorController {
     @ExceptionHandler(RecordNotFoundException.class)
     public ProblemDetail handleRecordNotFoundError(RecordNotFoundException ex){
         ProblemDetail response = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
-        response.setDetail(ex.getMessage());
+        response.setProperty("message",ex.getMessage());
         return response;
     }
-
-
 
 }
