@@ -37,9 +37,18 @@ mongo -u admin -p password --authenticationDatabase admin
 # Installation and Configuration
 
 1. **Install MongoDB** from the official website or package manager.
+
+- Windows Installer 
+
 https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.1-signed.msi
 
+- Zip Download
+
 https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.1.zip
+
+- Shell Download
+
+https://downloads.mongodb.com/compass/mongosh-2.3.2-win32-x64.zip
 
 
 2. **Create the following directories** (if not using Docker):
