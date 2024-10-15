@@ -1,4 +1,3 @@
-
 # What is MongoDB?
 
 - **Document-Oriented Database**: Data is stored in JSON-like documents.
@@ -40,17 +39,15 @@ https://downloads.mongodb.com/compass/mongosh-2.3.2-win32-x64.zip
 1. Run the Database
 
 ```bash
-
 mongod
 
 ```
 
-** Keep the terminal open 
+**Keep the terminal open**
 
 2. Onen a new terminal/cmd and run
 
 ```bash
-
 mongosh
 
 ```
