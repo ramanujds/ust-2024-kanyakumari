@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongo-server:
+    image: mongo
+    container_name: mongo-server
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=testdb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  ## Web based client
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongo-server
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo-server
+
+volumes:
+  mongo-data:
+    driver: local
