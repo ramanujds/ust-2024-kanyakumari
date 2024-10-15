@@ -1,24 +1,3 @@
-# Docker MongoDB Command
-
-To run MongoDB in a Docker container:
-
-```bash
-docker run -p 27017:27017 --name mongo \
-    -e MONGO_INITDB_ROOT_USERNAME=admin \
-    -e MONGO_INITDB_ROOT_PASSWORD=password \
-    -e MONGO_INITDB_DATABASE=test \
-    -v /tmp/mongo-data:/data/db mongo
-```
-
-- This command runs MongoDB with environment variables for a root user and mounts a volume for persistent data storage.
-
-# How to Start MongoDB Client
-
-To connect to the MongoDB instance using the credentials created during the Docker run:
-
-```bash
-mongo -u admin -p password --authenticationDatabase admin
-```
 
 # What is MongoDB?
 
@@ -30,7 +9,7 @@ mongo -u admin -p password --authenticationDatabase admin
 - **Query Language**: Uses JavaScript as the query language.
 - **Data Format**: Stores data in BSON (Binary JSON) format.
 
-# Default Port
+## Default Port
 
 - **27017**: The default port MongoDB listens on.
 
@@ -55,6 +34,27 @@ https://downloads.mongodb.com/compass/mongosh-2.3.2-win32-x64.zip
    - `C:\data\db` (for database storage)
    - `C:\data\log` (for log files)
 3. **Add MongoDB to system PATH** for easy access from the terminal.
+
+## How to run?
+
+1. Run the Database
+
+```bash
+
+mongod
+
+```
+
+** Keep the terminal open 
+
+2. Onen a new terminal/cmd and run
+
+```bash
+
+mongosh
+
+```
+
 
 # Collections and Documents
 
