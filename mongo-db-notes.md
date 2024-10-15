@@ -1,127 +1,198 @@
-**Docker MongoDB Command**
+# Docker MongoDB Command
 
-To initiate the MongoDB service using Docker, execute the following command:
-
-```bash
-docker run -p 27017:27017 —name mongo -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password -e MONGO_INITDB_DATABASE=test -v /tmp/mongo-data:/data/db mongo
-```
-
-**How to Start?**
-To start the MongoDB service, execute the following command:
+To run MongoDB in a Docker container:
 
 ```bash
-mongo -u admin -p password —authenticationDatabase admin
+docker run -p 27017:27017 --name mongo \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=password \
+    -e MONGO_INITDB_DATABASE=test \
+    -v /tmp/mongo-data:/data/db mongo
 ```
 
-**What is MongoDB?**
-MongoDB is a document-oriented database that operates on an object-oriented basis. It does not require the use of an Object-Relational Mapping (ORM) library. MongoDB is a non-relational database, lacking the structured nature of SQL databases. It does not support SQL queries and instead utilizes JavaScript as its query language. MongoDB stores data in BSON (Binary JSON) format.
+- This command runs MongoDB with environment variables for a root user and mounts a volume for persistent data storage.
 
-**Default Port?**
-The default port for MongoDB is 27017.
+# How to Start MongoDB Client
 
-**Installation and Configuration:**
-To install MongoDB, follow the appropriate installation instructions for your operating system. Subsequently, create the following folders:
-- `C:/data/db`
-- `C:/data/log`
-Finally, add MongoDB to the system’s PATH environment variable.
+To connect to the MongoDB instance using the credentials created during the Docker run:
 
-**Collection and Documents:**
-In MongoDB, collections are analogous to tables in MySQL, while documents are equivalent to rows in MySQL. The `_id` field serves as a unique identifier for each document. It is a 24-digit numeric value that can be automatically generated or manually provided.
-- Show all databases (non-empty)
-	show dbs
- 
-- Create or switch database
-	use book_db
+```bash
+mongo -u admin -p password --authenticationDatabase admin
+```
 
-- Create a collection
-	db.createCollection(“book”)
+# What is MongoDB?
 
-- See all the collections
-	db.getCollectionNames()
+- **Document-Oriented Database**: Data is stored in JSON-like documents.
+- **Object-Oriented**: Hence, Object-Relational Mapping (ORM) is not required.
+- **Non-Relational (NoSQL)**: Unlike traditional databases, it doesn't use rows and tables.
+- **No SQL**: MongoDB uses dynamic schemas for unstructured data.
+- **Scalable**: Easily scales horizontally by adding more servers.
+- **Query Language**: Uses JavaScript as the query language.
+- **Data Format**: Stores data in BSON (Binary JSON) format.
 
-- Insert a new Document
-	db.book.insert({
-			title:”Angular Programming”,
-			author:”Harsh Kumar”,
-			price:545.0
-			})
-	- With auto-generated id
+# Default Port
 
-	db.book.insert({
-			“_id” : 2,
-			“title” : “Java Programming”,
-			“author” : “Gaurav Sharma”,
-			“price” : 745
-			})
-	- Manual id
+- **27017**: The default port MongoDB listens on.
 
-	db.book.insert({
-			“_id” : 3,
-			“title” : “Mongo DB”,
-			“price” : 745,
-			“publishedYear”:2020
-			})
+# Installation and Configuration
 
-- View the documents
-	db.find()
-	db.find().pretty()
-	db.book.find({price:750})
-	db.book.find({$or:[{_id:2},{title:”Java Programming”}]})
-	db.book.find({price:{$gt:800}}).pretty()
-	
-- Delete
+1. **Install MongoDB** from the official website or package manager.
+2. **Create the following directories** (if not using Docker):
+   - `C:\data\db` (for database storage)
+   - `C:\data\log` (for log files)
+3. **Add MongoDB to system PATH** for easy access from the terminal.
 
-	db.book.remove({_id:4})
-	db.book.remove({“title” : “React JS”})
+# Collections and Documents
 
-- How to update the data
-	db.book.update({title:”Python for Beginers”},{$set:{title:”Angular Programming”, price:650}})
+- **Collections**: Equivalent to tables in relational databases like MySQL.
+- **Documents**: Equivalent to rows in MySQL. Each document is a JSON-like object.
+- **_id Field**: Automatically generated 24-digit hexadecimal identifier for each document. Can be manually provided.
 
-db.book.save({_id:100101,title:’Java Programming’, price:890})
+# MongoDB Commands
 
+### Show All Databases (Non-Empty)
+```bash
+show dbs
+```
 
+### Create or Switch Database
+```bash
+use book_db
+```
 
-db.book.update({_id:3},{$set:{price:650}})
+### Create a Collection
+```bash
+db.createCollection("book")
+```
 
+### See All Collections
+```bash
+db.getCollectionNames()
+```
 
-- Delete a database
-	db.dropDatabase()
+### Insert a New Document
 
-- Delete a collection
-	db.book.drop()
+- **With auto-generated `_id`**:
+  ```bash
+  db.book.insert({
+    title: "Angular Programming",
+    author: "Harsh Kumar",
+    price: 545.0
+  })
+  ```
 
-- Get the document count
-	db.book.find().count()
+- **With manually assigned `_id`**:
+  ```bash
+  db.book.insert({
+    _id: 2,
+    title: "Java Programming",
+    author: "Gaurav Sharma",
+    price: 745
+  })
+  ```
 
-- Using less than or greater than in find query
+- **Insert a document with additional fields**:
+  ```bash
+  db.book.insert({
+    _id: 3,
+    title: "MongoDB",
+    price: 745,
+    publishedYear: 2020
+  })
+  ```
 
+### View Documents
+- View all documents:
+  ```bash
+  db.book.find()
+  ```
 
-	 db.book.find({price:{$gt:700}})
+- Pretty-print documents:
+  ```bash
+  db.book.find().pretty()
+  ```
 
-## Create database order_db
+- Query by condition:
+  ```bash
+  db.book.find({ price: 750 })
+  ```
 
+- Query using `$or` condition:
+  ```bash
+  db.book.find({ $or: [{ _id: 2 }, { title: "Java Programming" }] })
+  ```
 
+- Query using greater than (`$gt`) operator:
+  ```bash
+  db.book.find({ price: { $gt: 800 } }).pretty()
+  ```
 
+### Delete a Document
+- Delete by `_id`:
+  ```bash
+  db.book.remove({ _id: 4 })
+  ```
+
+- Delete by condition:
+  ```bash
+  db.book.remove({ title: "React JS" })
+  ```
+
+### Update a Document
+- Update with a `$set` operation:
+  ```bash
+  db.book.update({ title: "Python for Beginners" }, { $set: { title: "Angular Programming", price: 650 } })
+  ```
+
+- Save (insert or update) a document:
+  ```bash
+  db.book.save({ _id: 100101, title: "Java Programming", price: 890 })
+  ```
+
+- Update a specific field in a document:
+  ```bash
+  db.book.update({ _id: 3 }, { $set: { price: 650 } })
+  ```
+
+### Drop a Database
+```bash
+db.dropDatabase()
+```
+
+### Drop a Collection
+```bash
+db.book.drop()
+```
+
+### Get Document Count
+```bash
+db.book.find().count()
+```
+
+### Query Using Less Than (`$lt`) or Greater Than (`$gt`) Operators
+```bash
+db.book.find({ price: { $gt: 700 } })
+```
+
+# Create a New Database
+
+```bash
 use order_db
-
-
-
-## Creating a new user to access the order_db database
-
-
-db.createUser(
-    {
-        user: “ramanuj”,
-        pwd: “password”,
-        roles: [
-            {
-```python
-{
-    “role”: “readWrite”,
-    “db”: “order_db”
-}
 ```
 
+# Create a New User for the `order_db` Database
 
+```bash
+db.createUser({
+  user: "ramanuj",
+  pwd: "password",
+  roles: [
+    {
+      role: "readWrite",
+      db: "order_db"
+    }
+  ]
+})
+```
 
-
+** read and write access to the `order_db` database.
