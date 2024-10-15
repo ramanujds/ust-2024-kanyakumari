@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 @Data
@@ -15,7 +16,7 @@ public class Trainee {
     @Id
     @JsonProperty("id")
     @Field(name = "_id")
-    private int id;
+    private BigInteger id;
 
     private String name;
 
@@ -23,6 +24,8 @@ public class Trainee {
 
     @Field(name = "date_joined")
     private LocalDate joinedDate;
+
+    private Project project;
 
 
 }

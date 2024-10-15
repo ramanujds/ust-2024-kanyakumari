@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class TraineeController {
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public Trainee getTrainee(@PathVariable("id") int id){
+    public Trainee getTrainee(@PathVariable("id") BigInteger id){
         return traineeService.findTraineeById(id);
     }
 
@@ -37,13 +38,13 @@ public class TraineeController {
 
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public Trainee updateTrainee(@PathVariable int id,@RequestBody Trainee trainee){
+    public Trainee updateTrainee(@PathVariable BigInteger id,@RequestBody Trainee trainee){
         return traineeService.updateTrainee(id,trainee);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTrainee(@PathVariable int id){
+    public void deleteTrainee(@PathVariable BigInteger id){
         traineeService.removeTrainee(id);
     }
 

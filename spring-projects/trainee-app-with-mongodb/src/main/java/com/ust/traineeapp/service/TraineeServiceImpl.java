@@ -5,6 +5,7 @@ import com.ust.traineeapp.repository.TraineeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 @Service
 public class TraineeServiceImpl implements  TraineeService{
@@ -13,17 +14,17 @@ public class TraineeServiceImpl implements  TraineeService{
     private TraineeRepository traineeRepo;
 
     public Trainee saveTrainee(Trainee trainee) {
-        if (traineeRepo.existsById(trainee.getId())){
+        if (trainee.getId()!=null && traineeRepo.existsById(trainee.getId())){
             throw new RuntimeException("Trainee with ID : "+trainee.getId()+" Already Present");
         }
         return traineeRepo.save(trainee);
     }
 
-    public Trainee findTraineeById(int id) {
+    public Trainee findTraineeById(BigInteger id) {
         return traineeRepo.findById(id).orElse(null);
     }
 
-    public void removeTrainee(int id) {
+    public void removeTrainee(BigInteger id) {
         traineeRepo.deleteById(id);
     }
 
@@ -31,8 +32,8 @@ public class TraineeServiceImpl implements  TraineeService{
         return traineeRepo.findAll();
     }
 
-    public Trainee updateTrainee(int id, Trainee trainee) {
-        if (!traineeRepo.existsById(trainee.getId())){
+    public Trainee updateTrainee(BigInteger id, Trainee trainee) {
+        if (!traineeRepo.existsById(id)){
             throw new RuntimeException("Trainee with ID : "+trainee.getId()+" Not Found");
         }
         return traineeRepo.save(trainee);
