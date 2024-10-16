@@ -1,5 +1,13 @@
-## Hibernate Validations
+## Spring Validations
 
+**Add the following dependency**
+
+```xml
+<dependency> 
+    <groupId>org.springframework.boot</groupId> 
+    <artifactId>spring-boot-starter-validation</artifactId> 
+</dependency>
+```
 
 * @NotNull: Validates that the annotated property value is not null.
 * @AssertTrue: Validates that the annotated property value is true.
