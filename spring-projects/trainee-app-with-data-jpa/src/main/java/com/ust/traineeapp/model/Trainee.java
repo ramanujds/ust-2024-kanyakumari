@@ -30,7 +30,7 @@ public class Trainee {
     @Column(length = 100)
     private String location;
     @Column(name = "joined_date")
-    @JsonFormat(pattern = "dd/MMM/yyyy")
+//    @JsonFormat(pattern = "dd/MMM/yyyy")
     private LocalDate joinedDate;
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    private Project project;

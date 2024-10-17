@@ -1,0 +1,19 @@
+spring:
+  application:
+    name:
+      trainee-app-with-data-jpa
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=ust_db;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: ${DB_PASSWORD:MyStrongPass123}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port:
+    8000
