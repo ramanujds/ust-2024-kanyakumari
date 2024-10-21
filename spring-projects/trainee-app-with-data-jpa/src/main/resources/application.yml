@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: ${PROFILE:sqlserver}
+    active: ${PROFILE:h2}
   application:
     name:
       trainee-app-with-data-jpa
