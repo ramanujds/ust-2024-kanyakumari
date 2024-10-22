@@ -2,6 +2,10 @@
 
 ## Welcome to UST
 
+## College-Student Management Example
+
+https://github.com/suhas991/College_Management
+
 ## Team Assignments
 
 ## Team 1: HTML Forms
