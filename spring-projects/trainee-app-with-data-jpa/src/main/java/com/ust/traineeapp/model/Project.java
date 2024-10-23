@@ -19,8 +19,13 @@ public class Project {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-//    @JsonIgnore
-//    private List<Trainee> trainees = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "project_trainees",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "trainee_id")
+    )
+    @JsonIgnore
+    private List<Trainee> trainees = new ArrayList<>();
 
 }

@@ -15,25 +15,25 @@ import java.time.LocalDateTime;
 public class TraineeApiErrorController {
 
 
-//    @ExceptionHandler(RecordNotFoundException.class)
-//    public ResponseEntity<ErrorResponseDTO> handleRecordNotFoundError(RecordNotFoundException ex, HttpServletRequest request){
-//        var status = HttpStatus.NOT_FOUND;
-//        ErrorResponseDTO body = new ErrorResponseDTO(
-//                LocalDateTime.now(),
-//                status.value(),
-//                status.getReasonPhrase(),
-//                ex.getMessage(),
-//                request.getRequestURI()
-//        );
-//        return ResponseEntity.status(status).body(body);
-//    }
-//
-
     @ExceptionHandler(RecordNotFoundException.class)
-    public ProblemDetail handleRecordNotFoundError(RecordNotFoundException ex){
-        ProblemDetail response = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
-        response.setProperty("message",ex.getMessage());
-        return response;
+    public ResponseEntity<ErrorResponseDTO> handleRecordNotFoundError(RecordNotFoundException ex, HttpServletRequest request){
+        var status = HttpStatus.NOT_FOUND;
+        ErrorResponseDTO body = new ErrorResponseDTO(
+                LocalDateTime.now(),
+                status.value(),
+                status.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(status).body(body);
     }
+
+
+//    @ExceptionHandler(RecordNotFoundException.class)
+//    public ProblemDetail handleRecordNotFoundError(RecordNotFoundException ex){
+//        ProblemDetail response = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
+//        response.setProperty("message",ex.getMessage());
+//        return response;
+//    }
 
 }

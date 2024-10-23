@@ -3,9 +3,9 @@ spring:
     name:
       trainee-app-with-data-jpa
   datasource:
-    url: jdbc:mysql://localhost:3306/ust_db
-    username: root
-    password: ${DB_PASSWORD:password}
+    url: jdbc:mysql://${RDS_HOSTNAME:localhost}:${RDS_PORT:3306}/${RDS_DB_NAME:ust_db}
+    username: ${RDS_USERNAME:root}
+    password: ${RDS_PASSWORD:password}
 
   jpa:
     hibernate:
@@ -16,4 +16,4 @@ spring:
         format_sql: true
 server:
   port:
-    8000
+    5000

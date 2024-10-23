@@ -12,6 +12,7 @@
 	<artifactId>trainee-app-with-data-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trainee-app-with-data-jpa</name>
+	<packaging>jar</packaging>
 	<description>Simple project for Spring Boot with Data JPA</description>
 	<url/>
 	<licenses>
