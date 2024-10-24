@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: mysql
+    active: sqlserver
   application:
     name:
       trainee-app-with-data-jpa
