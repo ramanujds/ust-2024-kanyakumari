@@ -3,9 +3,9 @@ spring:
     name:
       trainee-app-with-data-jpa
   datasource:
-    url: jdbc:postgresql://localhost:5432/ust_db
-    username: postgres
-    password: password
+    url: jdbc:postgresql://${RDS_HOSTNAME:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:ust_db}
+    username: ${RDS_USERNAME:postgres}
+    password: ${RDS_PASSWORD:password}
 
   jpa:
     hibernate:
