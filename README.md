@@ -2,6 +2,11 @@
 
 ## Welcome to UST
 
+## Online Shopping Case Study
+
+https://github.com/ramanujds/online-shopping-app
+
+
 ## College-Student Management Example
 
 https://github.com/suhas991/College_Management
