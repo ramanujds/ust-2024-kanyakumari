@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sql
+    environment:
+      ACCEPT_EULA: "1"
+      MSSQL_SA_PASSWORD: "MyStrongPass123"
+      MSSQL_PID: "Developer"
+      MSSQL_USER: "SA"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql  # Mount the volume
+    restart: always
+
+volumes:
+  sql_data:
