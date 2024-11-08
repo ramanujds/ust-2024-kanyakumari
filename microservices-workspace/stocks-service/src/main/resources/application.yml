@@ -1,7 +1,4 @@
 spring:
-  application:
-    name:
-      trainee-app-with-data-jpa
   datasource:
     url: jdbc:postgresql://${RDS_HOSTNAME:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:ust_db}
     username: ${RDS_USERNAME:postgres}
@@ -14,6 +11,4 @@ spring:
     properties:
       hibernate:
         format_sql: true
-server:
-  port:
-    8080
+
