@@ -4,6 +4,7 @@ import com.myportfolio.portfolioms.dto.Stock;
 import com.myportfolio.portfolioms.model.Portfolio;
 import com.myportfolio.portfolioms.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +21,10 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+//    @Autowired
+//    @Qualifier("basicRestTemplate")
+//    private RestTemplate basicRestTemplate;
 
     public Portfolio createPortfolio(Portfolio portfolio) {
         Portfolio savedPortfolio = portfolioRepo.save(portfolio);
