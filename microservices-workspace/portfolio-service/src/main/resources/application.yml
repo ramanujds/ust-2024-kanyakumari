@@ -22,6 +22,14 @@ spring:
 
 
 resilience4j:
+  retry:
+    metrics:
+      enabled: true
+    instances:
+      retry-stocks-fetch:
+        max-attempts: 5
+        wait-duration: 2s
+
   circuitbreaker:
     instances:
       stocks-service-cb:

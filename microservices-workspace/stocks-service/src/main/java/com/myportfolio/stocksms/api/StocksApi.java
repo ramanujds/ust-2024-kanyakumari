@@ -16,7 +16,7 @@ public class StocksApi {
 
     @GetMapping("/{id}")
     public Stock getStockById(@PathVariable int id){
-        return stocksRepo.findById(100)
+        return stocksRepo.findById(id)
                 .orElseThrow(()->new RuntimeException("No stock found with ID : "+id));
     }
 
