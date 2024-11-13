@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Portfolio {
     private String name;
 
     @ElementCollection
-    private Set<Integer> stocks = new HashSet<>();
+    private List<Integer> stocks = new ArrayList<>();
 
     @Transient
     private double totalValue;

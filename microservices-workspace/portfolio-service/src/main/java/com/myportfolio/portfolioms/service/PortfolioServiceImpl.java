@@ -1,6 +1,8 @@
 package com.myportfolio.portfolioms.service;
 
 import com.myportfolio.portfolioms.dto.Stock;
+import com.myportfolio.portfolioms.dto.StockInputList;
+import com.myportfolio.portfolioms.feignclient.StocksServiceClient;
 import com.myportfolio.portfolioms.model.Portfolio;
 import com.myportfolio.portfolioms.repository.PortfolioRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -11,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -24,12 +28,10 @@ public class PortfolioServiceImpl implements PortfolioService {
     @Autowired
     private PortfolioRepository portfolioRepo;
 
-    @Autowired
-    private RestTemplate restTemplate;
 
-//    @Autowired
-//    @Qualifier("basicRestTemplate")
-//    private RestTemplate basicRestTemplate;
+    @Autowired
+    StocksServiceClient stocksServiceClient;
+
 
     public Portfolio createPortfolio(Portfolio portfolio) {
         Portfolio savedPortfolio = portfolioRepo.save(portfolio);
@@ -45,17 +47,21 @@ public class PortfolioServiceImpl implements PortfolioService {
         return portfolio;
     }
 
-    public double fetchTotalValue(Portfolio portfolio) {
-
-        double totalValue = 0;
-        for (int stockId : portfolio.getStocks()) {
-
-            Stock stock = restTemplate.getForObject("http://STOCKS-SERVICE/stocks/" + stockId, Stock.class);
-            totalValue += stock.getPrice();
-
-        }
-        return totalValue;
+    @CircuitBreaker(fallbackMethod = "getAllStocksFallback", name = "stocks-service-cb")
+    public List<Stock> getAllStocks(List<Integer> stockIds) {
+        var stockIdsList = new StockInputList(stockIds);
+        return stocksServiceClient.getAllStocks(stockIdsList);
     }
+
+    private double fetchTotalValue(Portfolio portfolio) {
+        return getAllStocks(portfolio.getStocks()).stream().mapToDouble(Stock::getPrice).sum();
+    }
+
+
+    public List<Stock> getAllStocksFallback(List<Integer> stockIds, Throwable error) {
+        throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,error.getMessage());
+    }
+
 
 
 

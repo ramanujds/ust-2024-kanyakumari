@@ -1,5 +1,6 @@
 package com.myportfolio.stocksms.api;
 
+import com.myportfolio.stocksms.dto.StockInputList;
 import com.myportfolio.stocksms.model.Stock;
 import com.myportfolio.stocksms.repository.StocksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,14 @@ public class StocksApi {
         return stocksRepo.save(stock);
     }
 
-    @GetMapping
-    public List<Stock> getAllStocks(){
-        return stocksRepo.findAll();
+//    @GetMapping
+//    public List<Stock> getAllStocks(){
+//        return stocksRepo.findAll();
+//    }
+
+    @PostMapping("/all")
+    public List<Stock> findAllByIds(@RequestBody StockInputList stockInputs){
+        return stocksRepo.findAllById(stockInputs.ids());
     }
 
 }

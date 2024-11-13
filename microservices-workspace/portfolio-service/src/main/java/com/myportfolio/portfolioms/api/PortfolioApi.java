@@ -24,8 +24,8 @@ public class PortfolioApi {
         return portfolioService.createPortfolio(portfolio);
     }
     @GetMapping("/{id}")
-//    @CircuitBreaker(fallbackMethod = "getPortfolioByIdFallback", name = "stocks-service-cb")
-    @Retry(fallbackMethod = "getPortfolioByIdFallback", name = "retry-stocks-fetch")
+   @CircuitBreaker(fallbackMethod = "getPortfolioByIdFallback", name = "stocks-service-cb")
+//    @Retry(fallbackMethod = "getPortfolioByIdFallback", name = "retry-stocks-fetch")
     public Portfolio getPortfolioById(@PathVariable String id){
         return portfolioService.getPortfolioById(id);
     }
@@ -33,7 +33,7 @@ public class PortfolioApi {
 
     public Portfolio getPortfolioByIdFallback(@PathVariable String id, Throwable error) {
         log.error(error.toString());
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND,error.getMessage());
+        throw new ResponseStatusException(HttpStatus.BAD_GATEWAY,error.getMessage());
     }
 
 
