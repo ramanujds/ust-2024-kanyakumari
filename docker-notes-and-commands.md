@@ -1,5 +1,6 @@
-```markdown
-### Pull an image (e.g., MySQL)
+# Docker Notes and Commands
+
+## Pull an image (e.g., MySQL)
 
 To pull a Docker image from the Docker Hub repository, use the `docker pull` command. This command downloads the specified image to your local machine.
 
