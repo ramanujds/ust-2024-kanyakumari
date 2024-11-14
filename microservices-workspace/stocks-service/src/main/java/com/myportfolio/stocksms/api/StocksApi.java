@@ -16,13 +16,13 @@ public class StocksApi {
     private StocksRepository stocksRepo;
 
     @GetMapping("/{id}")
-    public Stock getStockById(@PathVariable int id){
+    public Stock getStockById(@PathVariable int id) {
         return stocksRepo.findById(id)
-                .orElseThrow(()->new RuntimeException("No stock found with ID : "+id));
+                .orElseThrow(() -> new RuntimeException("No stock found with ID : " + id));
     }
 
     @PostMapping
-    public Stock addStock(@RequestBody Stock stock){
+    public Stock addStock(@RequestBody Stock stock) {
         return stocksRepo.save(stock);
     }
 
@@ -32,8 +32,9 @@ public class StocksApi {
 //    }
 
     @PostMapping("/all")
-    public List<Stock> findAllByIds(@RequestBody StockInputList stockInputs){
+    public List<Stock> findAllByIds(@RequestBody StockInputList stockInputs) {
         return stocksRepo.findAllById(stockInputs.ids());
+
     }
 
 }
