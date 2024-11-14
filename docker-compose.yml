@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    networks:
+      - app-network
+
+  todo-app:
+    image: todo-app
+    ports:
+     -  "8080:8080"
+    restart: always
+    depends_on:
+      -  postgres
+    networks:
+      - app-network
+    environment:
+       POSTGRES_HOST: postgres
+       POSTGRES_PORT: 5432
+       POSTGRES_DB: postgres
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: password
+  
+
+networks:
+  app-network:
