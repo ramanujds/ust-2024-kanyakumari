@@ -1,66 +1,79 @@
-To initiate the Minikube cluster, execute the following command:
-```
+**Kubernetes Notes and Commands**
+
+**Starting Minikube:**
+
+```bash
 minikube start
 ```
 
-To monitor the status of the Minikube cluster, execute the following command:
-```
+**Checking Minikube Status:**
+
+```bash
 minikube status
 ```
 
-If the Minikube cluster fails to start, execute the following commands:
-```
+**Resolving Minikube Failure:**
+
+```bash
 minikube stop
 minikube delete —all
 rm -rf ~/.minikube
 minikube start —force-systemd=true
 ```
 
-To create a deployment named “easy-recipes” using the image “ram1uj/easy-recipes,” execute the following command:
-```
+**Creating a Deployment:**
+
+```bash
 kubectl create deployment easy-recipes —image=ram1uj/easy-recipes
 ```
 
-To expose the deployment “easy-recipes” as a NodePort service on port 80, execute the following command:
-```
+**Exposing a Deployment:**
+
+```bash
 kubectl expose deployment easy-recipes —type=NodePort —port=80
 ```
 
-To start the service “easy-recipes,” execute the following command:
-```
+**Monitoring a Service:**
+
+```bash
 minikube service easy-recipes
 ```
 
-To retrieve a list of all deployments, execute the following command:
-```
+**Retrieving Deployments:**
+
+```bash
 kubectl get deployments
 ```
 
-To retrieve a list of all services, execute the following command:
-```
+**Retrieving Services:**
+
+```bash
 kubectl get svc
 ```
 
-To delete the service “easy-recipes,” execute the following command:
-```
+**Deleting a Service:**
+
+```bash
 kubectl delete svc [service-name]
 ```
 
-To delete the deployment “easy-recipes,” execute the following command:
-```
+**Deleting a Deployment:**
+
+```bash
 kubectl delete deployment [deployment-name]
 ```
 
 **Scaling Applications:**
-To scale the deployment “easy-recipes” to three replicas, execute the following command:
-```
+
+```bash
 kubectl scale deployment easy-recipes —replicas=3
 ```
 
 **Pushing a New Release:**
-To update the image of the deployment “easy-recipes” to “ram1uj/covid-info,” execute the following command:
+
+```bash
+kubectl set image deployment easy-recipes easy-recipes=ram1uj/covid-info
 ```
-kubectl
 
 
 
