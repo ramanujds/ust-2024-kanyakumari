@@ -10,19 +10,19 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 
 @Data
-@Document
+//@Document
 public class Trainee {
 
-    @Id
-    @JsonProperty("id")
-    @Field(name = "_id")
+//    @Id
+//    @JsonProperty("id")
+//    @Field(name = "_id")
     private BigInteger id;
 
     private String name;
 
     private String location;
 
-    @Field(name = "date_joined")
+//    @Field(name = "date_joined")
     private LocalDate joinedDate;
 
     private Project project;

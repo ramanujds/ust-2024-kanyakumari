@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.math.BigInteger;
 
-public interface TraineeRepository extends MongoRepository<Trainee, BigInteger> {
-}
+//public interface TraineeRepository extends MongoRepository<Trainee, BigInteger> {
+//}

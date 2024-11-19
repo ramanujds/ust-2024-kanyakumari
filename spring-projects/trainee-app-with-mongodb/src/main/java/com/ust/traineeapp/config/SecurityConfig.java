@@ -18,21 +18,21 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-//    @Bean
-//    public UserDetailsService getUserDetailsService(){
-//        User.UserBuilder users = User.withDefaultPasswordEncoder();
-//        UserDetails admin = users.username("admin")
-//                .password("admin123")
-//                .roles("ADMIN")
-//                .build();
-//
-//        UserDetails user = users.username("user")
-//                .password("pass123")
-//                .roles("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user,admin);
-//    }
+    @Bean
+    public UserDetailsService getUserDetailsService(){
+        User.UserBuilder users = User.withDefaultPasswordEncoder();
+        UserDetails admin = users.username("admin")
+                .password("admin123")
+                .roles("ADMIN")
+                .build();
+
+        UserDetails user = users.username("user")
+                .password("pass123")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user,admin);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -49,10 +49,10 @@ public class SecurityConfig {
     }
 
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder getPasswordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
 
 
 }

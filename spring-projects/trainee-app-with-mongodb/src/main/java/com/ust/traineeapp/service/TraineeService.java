@@ -9,13 +9,13 @@ public interface TraineeService {
 
     Trainee saveTrainee(Trainee trainee);
 
-    Trainee findTraineeById(BigInteger id);
-
-    void removeTrainee(BigInteger id);
-
-    List<Trainee> getAllTrainees();
-
-    Trainee updateTrainee(BigInteger id, Trainee trainee);
+//    Trainee findTraineeById(BigInteger id);
+//
+//    void removeTrainee(BigInteger id);
+//
+//    List<Trainee> getAllTrainees();
+//
+//    Trainee updateTrainee(BigInteger id, Trainee trainee);
 
 
 }

@@ -23,32 +23,32 @@ public class TraineeController {
         return traineeService.saveTrainee(trainee);
     }
 
-    @GetMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.OK)
-    public Trainee getTrainee(@PathVariable("id") BigInteger id){
-        return traineeService.findTraineeById(id);
-    }
+//    @GetMapping("/{id}")
+//    @ResponseStatus(code = HttpStatus.OK)
+//    public Trainee getTrainee(@PathVariable("id") BigInteger id){
+//        return traineeService.findTraineeById(id);
+//    }
 
 
-    @GetMapping
-    @ResponseStatus(code = HttpStatus.OK)
-    public List<Trainee> getAllTrainees(){
-        return traineeService.getAllTrainees();
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(code = HttpStatus.ACCEPTED)
-    public Trainee updateTrainee(@PathVariable BigInteger id,@RequestBody Trainee trainee){
-        return traineeService.updateTrainee(id,trainee);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTrainee(@PathVariable BigInteger id){
-        traineeService.removeTrainee(id);
-    }
-
-
+//    @GetMapping
+//    @ResponseStatus(code = HttpStatus.OK)
+//    public List<Trainee> getAllTrainees(){
+//        return traineeService.getAllTrainees();
+//    }
+//
+//    @PutMapping("/{id}")
+//    @ResponseStatus(code = HttpStatus.ACCEPTED)
+//    public Trainee updateTrainee(@PathVariable BigInteger id,@RequestBody Trainee trainee){
+//        return traineeService.updateTrainee(id,trainee);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deleteTrainee(@PathVariable BigInteger id){
+//        traineeService.removeTrainee(id);
+//    }
+//
+//
 
 
 }
