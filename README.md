@@ -2,6 +2,10 @@
 
 ## Welcome to UST
 
+## MacOS Docker Build to Build x86 Image
+
+docker buildx build --platform=linux/amd64 -t [iamge-name] .
+
 ## Online Shopping Case Study
 
 https://github.com/ramanujds/online-shopping-app
