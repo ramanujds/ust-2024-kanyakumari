@@ -1,0 +1,102 @@
+version: '3.7'
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    networks:
+      - app-network
+
+
+
+  eureka-server:
+    image: charanjose16/eureka-server
+    ports:
+      - "8761:8761"
+#    depends_on:
+#      - eureka-server
+    networks:
+      - app-network
+
+
+  api-gateway:
+    image: charanjose16/api-gateway
+    ports:
+      - "8082:8888"
+    depends_on:
+      - eureka-server
+    networks:
+      - app-network
+    environment:
+      EUREKA_HOST: eureka-server
+      EUREKA_PORT: 8761
+
+
+
+  mutual-fund:
+    image: charanjose16/mutual-fund
+    ports:
+      - "8083:8200"
+    depends_on:
+      - eureka-server
+      - postgres
+    networks:
+      - app-network
+    environment:
+      EUREKA_HOST: eureka-server
+      EUREKA_PORT: 8761
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+
+
+
+  portfolio-service:
+    image: charanjose16/portfolio-service
+    ports:
+      - "8084:8000"
+    depends_on:
+      - eureka-server
+      - postgres
+    networks:
+      - app-network
+    environment:
+      EUREKA_HOST: eureka-server
+      EUREKA_PORT: 8761
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+
+
+
+  stocks-service:
+    image: charanjose16/stocks-service
+    ports:
+      - "8085:8100"
+    depends_on:
+      - eureka-server
+      - postgres
+    networks:
+      - app-network
+    environment:
+      EUREKA_HOST: eureka-server
+      EUREKA_PORT: 8761
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+
+
+
+networks:
+  app-network:

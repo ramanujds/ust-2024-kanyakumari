@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: portfolio-service
+  name: portfolio-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: portfolio-service
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.28.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/microservices-workspace-app-network: "true"
+        io.kompose.service: portfolio-service
+    spec:
+      containers:
+        - env:
+            - name: EUREKA_HOST
+              value: eureka-server
+            - name: EUREKA_PORT
+              value: "8761"
+            - name: RDS_DB_NAME
+              value: postgres
+            - name: RDS_HOSTNAME
+              value: postgres
+            - name: RDS_PASSWORD
+              value: password
+            - name: RDS_PORT
+              value: "5432"
+            - name: RDS_USERNAME
+              value: postgres
+          image: portfolio-service
+          name: portfolio-service
+          ports:
+            - containerPort: 8000
+          resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: stocks-service
+  name: stocks-service
+spec:
+  ports:
+    - name: "8100"
+      port: 8100
+      targetPort: 8100
+  selector:
+    io.kompose.service: stocks-service
+status:
+  loadBalancer: {}

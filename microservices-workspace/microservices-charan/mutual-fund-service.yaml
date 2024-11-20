@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.28.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mutual-fund
+  name: mutual-fund
+spec:
+  ports:
+    - name: "8083"
+      port: 8083
+      targetPort: 8200
+  selector:
+    io.kompose.service: mutual-fund
+status:
+  loadBalancer: {}
