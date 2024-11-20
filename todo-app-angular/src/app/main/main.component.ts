@@ -10,5 +10,5 @@ import { ViewTodosComponent } from "../view-todos/view-todos.component";
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-
+  
 }

@@ -1,1 +1,26 @@
-<p>add-todos works!</p>
+<form (submit)="addTodos(todoForm.value)" #todoForm="ngForm">
+    <div class="form-group">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" id="title" class="form-control"
+           ngModel pattern="[a-zA-Z0-9 ]{3,}" required #titleText="ngModel"
+           [class.is-invalid]="titleText.touched && titleText.invalid"
+           [class.is-valid]="titleText.touched && titleText.valid"
+           >
+           <small *ngIf="titleText.touched && titleText.invalid">
+                <span *ngIf="titleText.errors?.['required']" class="text-danger">Title is required</span>
+                <span *ngIf="titleText.errors?.['pattern']" class="text-danger">Invalid title</span>
+           </small>
+    </div>
+    <div class="form-group">
+        <label for="status" class="form-label">Status</label>
+        <input type="text" name="status" id="status" class="form-control"
+           ngModel required #statusText="ngModel">
+           <small *ngIf="statusText.touched && statusText.invalid" class="text-danger">Status is required</small>
+    </div>
+    <div class="form-group">
+        <button [disabled]="todoForm.invalid" type="submit" class="btn btn-primary">Save Todo</button>
+        <button type="reset" class="btn btn-dark">Reset</button>
+        <button type="button" (click)="printTodos()" class="btn btn-success">Print All Todos</button>
+    </div>
+
+</form>
