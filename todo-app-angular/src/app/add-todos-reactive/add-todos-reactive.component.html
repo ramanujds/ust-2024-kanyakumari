@@ -17,7 +17,7 @@
         formControlName="status">
            <small *ngIf="todoForm.get('status').touched && todoForm.get('status').invalid" class="text-danger">Status is required</small>
     </div>
-    <div class="form-group" formGroupName="subTasks">
+    <!-- <div class="form-group" formGroupName="subTasks">
         <div class="form-row">
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name" class="form-control"
@@ -28,7 +28,7 @@
             <input type="text" name="description" id="description" class="form-control"
             formControlName="description">
         </div>
-    </div>
+    </div> -->
     
     <div class="form-row">
         <button [disabled]="todoForm.invalid" type="submit" class="btn btn-primary">Save Todo</button>

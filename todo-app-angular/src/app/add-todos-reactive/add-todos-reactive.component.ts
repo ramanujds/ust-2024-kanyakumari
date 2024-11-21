@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TodoDataService } from '../todo-data.service';
+import { TodoApiService } from '../todo-api.service';
 
 @Component({
   selector: 'app-add-todos-reactive',
@@ -12,7 +13,7 @@ import { TodoDataService } from '../todo-data.service';
 })
 export class AddTodosReactiveComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder, private todoDataService:TodoDataService) { }
+  constructor(private formBuilder:FormBuilder, private todoApiService:TodoApiService) { }
 
   todoForm:FormGroup|any;
 
@@ -20,20 +21,24 @@ export class AddTodosReactiveComponent implements OnInit {
    this.todoForm = this.formBuilder.group({
       title:['',[Validators.required,Validators.pattern('[a-zA-Z0-9 ]{3,20}')]],
       status:['',Validators.required],
-      subTasks:this.formBuilder.group(
-        {
-          name:[''],
-          description:['']
-        }
-      )
+      // subTasks:this.formBuilder.group(
+      //   {
+      //     name:[''],
+      //     description:['']
+      //   }
+      // )
     }
     )
       
   }
 
   addTodos(todo:any){
-    this.todoDataService.addTodo(todo)
-    
+    this.todoApiService.createTodo(todo)
+        .subscribe(
+          response => console.log(response),
+          error => console.error(error)
+          )  
+  
   }
 
 
