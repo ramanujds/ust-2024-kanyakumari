@@ -1,3 +1,7 @@
-<div *ngFor="let todo of todoDataService.todos">
+<div class="container">
+<div class="row">
+<div *ngFor="let todo of todoDataService.todos" class="card mb-4" style="width: 18rem; margin-right: 10px;">
     <app-todo-card [todo]="todo"></app-todo-card>
+</div>
+</div>
 </div>
