@@ -13,7 +13,8 @@ import { TodoApiService } from '../todo-api.service';
 })
 export class AddTodosReactiveComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder, private todoApiService:TodoApiService) { }
+  constructor(private formBuilder:FormBuilder, private todoApiService:TodoApiService, 
+    private todoDataService:TodoDataService) { }
 
   todoForm:FormGroup|any;
 
@@ -35,7 +36,10 @@ export class AddTodosReactiveComponent implements OnInit {
   addTodos(todo:any){
     this.todoApiService.createTodo(todo)
         .subscribe(
-          response => console.log(response),
+          response => {
+            console.log(response)
+            this.todoDataService.fetchTodos()
+          },
           error => console.error(error)
           )  
   

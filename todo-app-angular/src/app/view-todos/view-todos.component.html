@@ -1,7 +1,15 @@
+
 <div class="container">
 <div class="row">
-<div *ngFor="let todo of todoDataService.todos" class="card mb-4" style="width: 18rem; margin-right: 10px;">
-    <app-todo-card [todo]="todo"></app-todo-card>
+    @for (todo of todoDataService.todos; track todo.id) {
+        <app-todo-card class="card mb-4" style="width: 18rem; margin-right: 10px;" [todo]="todo"></app-todo-card>
+    }
 </div>
 </div>
+
+<div>
+    <button class="btn btn-primary" (click)="todoDataService.fetchTodos()">Refresh</button>
 </div>
+
+<!-- @for (color of colors; track color) {
+    <li>{{ color }}</li> -->
