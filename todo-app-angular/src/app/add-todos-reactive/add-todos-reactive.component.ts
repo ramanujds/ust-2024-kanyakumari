@@ -3,18 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TodoDataService } from '../todo-data.service';
 import { TodoApiService } from '../todo-api.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-todos-reactive',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,RouterModule],
   templateUrl: './add-todos-reactive.component.html',
   styleUrl: './add-todos-reactive.component.css'
 })
 export class AddTodosReactiveComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder, private todoApiService:TodoApiService, 
-    private todoDataService:TodoDataService) { }
+  private router:Router) { }
 
   todoForm:FormGroup|any;
 
@@ -38,7 +39,7 @@ export class AddTodosReactiveComponent implements OnInit {
         .subscribe(
           response => {
             console.log(response)
-            this.todoDataService.fetchTodos()
+            this.router.navigate(['/view-all'])
           },
           error => console.error(error)
           )  

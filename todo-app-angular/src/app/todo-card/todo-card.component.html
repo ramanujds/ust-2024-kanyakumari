@@ -2,8 +2,14 @@
     <div class="card-body">
       <h5 class="card-title">{{todo?.title}}</h5>
       <h6 class="card-subtitle mb-2 text-body-secondary">{{todo?.status}}</h6>
-      <a href="#" class="btn btn-dark">Explore More</a>
+      <!-- <a href="#" (click)="toggleUpdate()" class="btn btn-dark">Update</a> -->
+      <a routerLink="/view/{{todo?.id}}" class="btn btn-dark">View Details</a>
+      
       <button class="btn btn-danger">Delete</button>
     </div>
     
+    <div *ngIf="isUpadting" class="card">
+      <div class="card-body">
+       <app-update-todo [todo]="todo"></app-update-todo>
+      </div>
 

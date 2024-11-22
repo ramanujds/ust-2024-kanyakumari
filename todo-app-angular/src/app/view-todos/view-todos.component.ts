@@ -14,15 +14,21 @@ import { Todo } from '../model/Todo';
 })
 export class ViewTodosComponent implements OnInit {
 
+  todos:Array<Todo>=[]
 
-  constructor(public todoDataService:TodoDataService){}
+  constructor(private todoApiService:TodoApiService){}
 
   ngOnInit(): void {
-    this.todoDataService.fetchTodos()
+    this.fetchTodos()
    
   }
 
   
+  fetchTodos(){
+    this.todoApiService.fetchTodos().subscribe(
+      response => this.todos=response
+    )
+  }
 
 
 }
