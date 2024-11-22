@@ -10,6 +10,7 @@
         <module name="mutual-fund-service" />
         <module name="auth-service" />
         <module name="stocks-service" />
+        <module name="auth-service-with-spring-boot-2" />
         <module name="eureka-server" />
         <module name="api-gateway-server" />
         <module name="portfolio-service" />
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway-server" options="-parameters" />
       <module name="auth-service" options="-parameters" />
+      <module name="auth-service-with-spring-boot-2" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="mutual-fund-service" options="-parameters" />
       <module name="portfolio-service" options="-parameters" />

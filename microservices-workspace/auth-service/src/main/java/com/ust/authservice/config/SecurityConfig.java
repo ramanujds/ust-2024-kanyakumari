@@ -29,7 +29,7 @@ public class SecurityConfig {
                                         .requestMatchers("/api/v1/app/hello/admin/**").hasRole("ADMIN")
                                         .requestMatchers("/api/v1/app/hello/user/**").hasRole("USER")
                                         .requestMatchers("/api/v1/app/**").hasAnyRole("USER","ADMIN")
-                                        .requestMatchers("/**").permitAll()
+                                        .requestMatchers("/api/v1/auth/*").permitAll()
                                         .anyRequest().authenticated())
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(httpSecuritySessionManagementConfigurer ->
