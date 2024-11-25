@@ -42,33 +42,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     AuthFilter authFilter;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.userDetailsService(userDetailsService);
-
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password("$2a$12$6VNeAf2CNX1SsVpDeB65SunD5RfnnUQQHUTQ61lHSIoYbvyTwVzN2")
-//                .roles("ADMIN")
-//                .build();
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //
-//        UserDetails user = User.builder()
-//                .username("USER")
-//                .password("$2a$12$EbCYTojKcOJ57WrytHbwB.n64MmxWAz3QYPZNdKpcYvCkTWToerhe")
-//                .roles("USER")
-//                .build();
+//        auth.userDetailsService(userDetailsService);
 //
-//        auth.inMemoryAuthentication().withUser(admin)
-//                .withUser(user);
-
-    }
+////        UserDetails admin = User.builder()
+////                .username("admin")
+////                .password("$2a$12$6VNeAf2CNX1SsVpDeB65SunD5RfnnUQQHUTQ61lHSIoYbvyTwVzN2")
+////                .roles("ADMIN")
+////                .build();
+////
+////        UserDetails user = User.builder()
+////                .username("USER")
+////                .password("$2a$12$EbCYTojKcOJ57WrytHbwB.n64MmxWAz3QYPZNdKpcYvCkTWToerhe")
+////                .roles("USER")
+////                .build();
+////
+////        auth.inMemoryAuthentication().withUser(admin)
+////                .withUser(user);
+//
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/api/public/**").permitAll()
                 .antMatchers("/api/secured/**").hasRole("ADMIN")
+                .antMatchers("/api/user/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
