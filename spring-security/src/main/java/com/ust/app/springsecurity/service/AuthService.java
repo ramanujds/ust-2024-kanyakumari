@@ -6,6 +6,11 @@ import com.ust.app.springsecurity.model.UserModel;
 import com.ust.app.springsecurity.repository.UserRepository;
 import com.ust.app.springsecurity.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,25 +18,28 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserDetailsService userDetailsService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    private JwtUtil jwtUtil;
+    AuthenticationManager authenticationManager;
 
-    public JwtToken authenticate(UserCredentials userCredentials){
 
-        UserModel userModel = userRepo.findByUsername(userCredentials.getUsername())
-                .orElseThrow();
+    public void authenticate(UserCredentials userCredentials){
 
-       if(!passwordEncoder.matches(userCredentials.getPassword(),userModel.getPassword())){
-           throw new RuntimeException("Invalid Credentials");
-       }
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword())
+            );
+        } catch (AuthenticationException e) {
+            throw new RuntimeException("Invalid Credentials", e);
+        }
 
-       String jwt = jwtUtil.generateToken(userModel.getUsername());
-       return new JwtToken(jwt);
+
+
+
     }
 
 

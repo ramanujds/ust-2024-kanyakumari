@@ -1,8 +1,5 @@
 package com.ust.app.springsecurity.util;
 
-import com.ust.app.springsecurity.model.UserModel;
-import com.ust.app.springsecurity.repository.UserRepository;
-import com.ust.app.springsecurity.service.UserDetailsImpl;
 import com.ust.app.springsecurity.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,13 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class AuthFilter extends OncePerRequestFilter {
+public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     @Autowired
     JwtUtil jwtUtil;
 
-//    @Autowired
-//    UserRepository userRepo;
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;

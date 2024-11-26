@@ -17,11 +17,10 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public JwtToken login(@RequestBody UserCredentials userCredentials){
+    public void login(@RequestBody UserCredentials userCredentials){
 
-        String jwt = "shijshjdsbka";
+        authService.authenticate(userCredentials);
 
-        return authService.authenticate(userCredentials);
 
     }
 

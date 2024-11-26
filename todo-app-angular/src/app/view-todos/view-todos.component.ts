@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { TodoCardComponent } from "../todo-card/todo-card.component";
 import { TodoApiService } from '../todo-api.service';
 import { Todo } from '../model/Todo';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-view-todos',
   standalone: true,
-  imports: [CommonModule, TodoCardComponent],
+  imports: [CommonModule, TodoCardComponent,RouterModule],
   templateUrl: './view-todos.component.html',
   styleUrl: './view-todos.component.css'
 })
