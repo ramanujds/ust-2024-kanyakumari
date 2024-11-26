@@ -27,8 +27,10 @@ export class ViewTodosComponent implements OnInit {
   
   fetchTodos(){
     this.todoApiService.fetchTodos().subscribe(
-      response => this.todos=response
+      response => this.todos=response,
+      
     )
+   
   }
 
 
