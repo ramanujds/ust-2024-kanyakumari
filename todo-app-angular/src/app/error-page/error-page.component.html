@@ -7,18 +7,17 @@
           content="width=device-width, 
                    initial-scale=1.0">
     <title>
-        404 Page Not Found
+        
     </title>
 </head>
 
 <body>
     <div class="error-container">
-        <h1> 404 </h1>
+        <h1> Error : {{errorHandler.errorResponse.status}} </h1>
         <p>
-            Oops! The page you're
-            looking for is not here.
+            {{errorHandler.errorResponse.message}}
         </p>
-        <a href="https://www.geeksforgeeks.org/">
+        <a href="/">
             Go Back to Home
         </a>
     </div>

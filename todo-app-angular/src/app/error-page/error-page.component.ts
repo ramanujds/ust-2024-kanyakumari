@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ErrorHandlerService } from '../error-handler.service';
 
 @Component({
   selector: 'app-error-page',
@@ -9,6 +10,6 @@ import { Component } from '@angular/core';
 })
 export class ErrorPageComponent {
 
-  
+  constructor(public errorHandler:ErrorHandlerService){}
 
 }
