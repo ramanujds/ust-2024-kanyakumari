@@ -3,11 +3,12 @@ import { Todo } from '../model/Todo';
 import { UpdateTodoComponent } from "../update-todo/update-todo.component";
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ShortenPipe } from '../shorten.pipe';
 
 @Component({
   selector: 'app-todo-card',
   standalone: true,
-  imports: [UpdateTodoComponent,CommonModule, RouterModule],
+  imports: [UpdateTodoComponent,CommonModule, RouterModule, ShortenPipe],
   templateUrl: './todo-card.component.html',
   styleUrl: './todo-card.component.css'
 })
