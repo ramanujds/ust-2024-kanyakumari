@@ -26,13 +26,19 @@ public class AuthService {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    JwtUtil jwtUtil;
 
-    public void authenticate(UserCredentials userCredentials){
+
+    public JwtToken authenticate(UserCredentials userCredentials){
 
         try {
             Authentication authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword())
-            );
+                    new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword()));
+                    String username = authentication.getName();
+                    return new JwtToken(jwtUtil.generateToken(username));
+
+
         } catch (AuthenticationException e) {
             throw new RuntimeException("Invalid Credentials", e);
         }

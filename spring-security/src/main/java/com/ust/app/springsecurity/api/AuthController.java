@@ -4,22 +4,20 @@ import com.ust.app.springsecurity.dto.JwtToken;
 import com.ust.app.springsecurity.dto.UserCredentials;
 import com.ust.app.springsecurity.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/public")
+@CrossOrigin
 public class AuthController {
 
     @Autowired
     private AuthService authService;
 
     @PostMapping("/login")
-    public void login(@RequestBody UserCredentials userCredentials){
+    public JwtToken login(@RequestBody UserCredentials userCredentials){
 
-        authService.authenticate(userCredentials);
+       return authService.authenticate(userCredentials);
 
 
     }

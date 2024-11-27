@@ -1,0 +1,329 @@
+Index: spring-security/src/main/java/com/ust/app/springsecurity/config/SecurityConfiguration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ust.app.springsecurity.config;\n\nimport com.ust.app.springsecurity.util.AuthFilter;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.context.annotation.Bean;\nimport org.springframework.context.annotation.Configuration;\nimport org.springframework.security.config.Customizer;\nimport org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;\nimport org.springframework.security.config.annotation.web.builders.HttpSecurity;\nimport org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;\nimport org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;\nimport org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;\nimport org.springframework.security.config.http.SessionCreationPolicy;\nimport org.springframework.security.core.userdetails.User;\nimport org.springframework.security.core.userdetails.UserDetails;\nimport org.springframework.security.core.userdetails.UserDetailsService;\nimport org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;\nimport org.springframework.security.crypto.password.PasswordEncoder;\nimport org.springframework.security.web.SecurityFilterChain;\nimport org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;\n\nimport javax.persistence.Access;\n\n@Configuration\n@EnableWebSecurity\npublic class SecurityConfiguration extends WebSecurityConfigurerAdapter {\n\n//    @Bean\n//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\n//        http.authorizeHttpRequests(req->{\n//            req.requestMatchers(\"/api/public\").permitAll();\n//            req.anyRequest().authenticated();\n//        });\n//        http.formLogin(AbstractHttpConfigurer::disable);\n//        http.httpBasic(Customizer.withDefaults());\n//        return http.build();\n//    }\n\n    @Autowired\n    UserDetailsService userDetailsService;\n\n    @Autowired\n    AuthFilter authFilter;\n\n//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {\n//\n//        auth.userDetailsService(userDetailsService);\n//\n////        UserDetails admin = User.builder()\n////                .username(\"admin\")\n////                .password(\"$2a$12$6VNeAf2CNX1SsVpDeB65SunD5RfnnUQQHUTQ61lHSIoYbvyTwVzN2\")\n////                .roles(\"ADMIN\")\n////                .build();\n////\n////        UserDetails user = User.builder()\n////                .username(\"USER\")\n////                .password(\"$2a$12$EbCYTojKcOJ57WrytHbwB.n64MmxWAz3QYPZNdKpcYvCkTWToerhe\")\n////                .roles(\"USER\")\n////                .build();\n////\n////        auth.inMemoryAuthentication().withUser(admin)\n////                .withUser(user);\n//\n//    }\n\n    @Override\n    protected void configure(HttpSecurity http) throws Exception {\n        http.authorizeHttpRequests()\n                .antMatchers(\"/api/public/**\").permitAll()\n                .antMatchers(\"/api/secured/**\").hasRole(\"ADMIN\")\n                .antMatchers(\"/api/user/**\").hasRole(\"USER\")\n                .anyRequest().authenticated()\n                .and()\n                .formLogin()\n                .and()\n                .httpBasic()\n                .and()\n                .csrf().disable()\n                .sessionManagement()\n                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)\n                .and()\n                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);\n\n        ;\n\n    }\n\n    @Bean\n    public PasswordEncoder getPasswordEncoder(){\n        return new BCryptPasswordEncoder();\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/config/SecurityConfiguration.java b/spring-security/src/main/java/com/ust/app/springsecurity/config/SecurityConfiguration.java
+--- a/spring-security/src/main/java/com/ust/app/springsecurity/config/SecurityConfiguration.java	(revision 0c411c3480307ef499232eeb9d3badd269313b28)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/config/SecurityConfiguration.java	(date 1732538284438)
+@@ -1,67 +1,50 @@
+ package com.ust.app.springsecurity.config;
+ 
+-import com.ust.app.springsecurity.util.AuthFilter;
++import com.ust.app.springsecurity.util.JwtAuthorizationFilter;
++import com.ust.app.springsecurity.util.JwtAuthenticationFilter;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+-import org.springframework.security.config.Customizer;
++import org.springframework.security.authentication.AuthenticationManager;
+ import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+ import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+ import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+ import org.springframework.security.config.http.SessionCreationPolicy;
+-import org.springframework.security.core.userdetails.User;
+-import org.springframework.security.core.userdetails.UserDetails;
+ import org.springframework.security.core.userdetails.UserDetailsService;
+ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+ import org.springframework.security.crypto.password.PasswordEncoder;
+-import org.springframework.security.web.SecurityFilterChain;
+ import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+ 
+-import javax.persistence.Access;
+-
+ @Configuration
+ @EnableWebSecurity
+ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+ 
+-//    @Bean
+-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+-//        http.authorizeHttpRequests(req->{
+-//            req.requestMatchers("/api/public").permitAll();
+-//            req.anyRequest().authenticated();
+-//        });
+-//        http.formLogin(AbstractHttpConfigurer::disable);
+-//        http.httpBasic(Customizer.withDefaults());
+-//        return http.build();
+-//    }
+ 
+     @Autowired
+     UserDetailsService userDetailsService;
+ 
++
+     @Autowired
+-    AuthFilter authFilter;
++    JwtAuthorizationFilter jwtAuthorizationFilter;
++
++    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
++
++        auth.userDetailsService(userDetailsService);
++
++    }
+ 
+-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+-//
+-//        auth.userDetailsService(userDetailsService);
+-//
+-////        UserDetails admin = User.builder()
+-////                .username("admin")
+-////                .password("$2a$12$6VNeAf2CNX1SsVpDeB65SunD5RfnnUQQHUTQ61lHSIoYbvyTwVzN2")
+-////                .roles("ADMIN")
+-////                .build();
+-////
+-////        UserDetails user = User.builder()
+-////                .username("USER")
+-////                .password("$2a$12$EbCYTojKcOJ57WrytHbwB.n64MmxWAz3QYPZNdKpcYvCkTWToerhe")
+-////                .roles("USER")
+-////                .build();
+-////
+-////        auth.inMemoryAuthentication().withUser(admin)
+-////                .withUser(user);
+-//
+-//    }
++    @Bean
++    public AuthenticationManager authenticationManagerBean() throws Exception {
++        return super.authenticationManagerBean();
++    }
++
++    @Bean
++    public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
++        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
++        filter.setAuthenticationManager(authenticationManagerBean());
++        return filter;
++    }
+ 
+     @Override
+     protected void configure(HttpSecurity http) throws Exception {
+@@ -79,14 +62,16 @@
+                 .sessionManagement()
+                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                 .and()
+-                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
++                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
++                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
++
+ 
+         ;
+ 
+     }
+ 
+     @Bean
+-    public PasswordEncoder getPasswordEncoder(){
++    public PasswordEncoder getPasswordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
+ 
+Index: spring-security/src/main/java/com/ust/app/springsecurity/api/AuthController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ust.app.springsecurity.api;\n\nimport com.ust.app.springsecurity.dto.JwtToken;\nimport com.ust.app.springsecurity.dto.UserCredentials;\nimport com.ust.app.springsecurity.service.AuthService;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\n@RequestMapping(\"/api/public\")\npublic class AuthController {\n\n    @Autowired\n    private AuthService authService;\n\n    @PostMapping(\"/login\")\n    public JwtToken login(@RequestBody UserCredentials userCredentials){\n\n        String jwt = \"shijshjdsbka\";\n\n        return authService.authenticate(userCredentials);\n\n    }\n\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/api/AuthController.java b/spring-security/src/main/java/com/ust/app/springsecurity/api/AuthController.java
+--- a/spring-security/src/main/java/com/ust/app/springsecurity/api/AuthController.java	(revision 0c411c3480307ef499232eeb9d3badd269313b28)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/api/AuthController.java	(date 1732535071624)
+@@ -17,11 +17,10 @@
+     private AuthService authService;
+ 
+     @PostMapping("/login")
+-    public JwtToken login(@RequestBody UserCredentials userCredentials){
++    public void login(@RequestBody UserCredentials userCredentials){
+ 
+-        String jwt = "shijshjdsbka";
++        authService.authenticate(userCredentials);
+ 
+-        return authService.authenticate(userCredentials);
+ 
+     }
+ 
+Index: spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthenticationFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthenticationFilter.java b/spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthenticationFilter.java
+new file mode 100644
+--- /dev/null	(date 1732538466232)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthenticationFilter.java	(date 1732538466232)
+@@ -0,0 +1,55 @@
++package com.ust.app.springsecurity.util;
++
++import com.fasterxml.jackson.databind.ObjectMapper;
++import com.ust.app.springsecurity.dto.JwtToken;
++import com.ust.app.springsecurity.dto.UserCredentials;
++import com.ust.app.springsecurity.service.AuthService;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.security.authentication.AuthenticationManager;
++import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
++import org.springframework.security.core.Authentication;
++import org.springframework.security.core.AuthenticationException;
++import org.springframework.security.core.userdetails.User;
++import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
++import org.springframework.stereotype.Component;
++
++import javax.servlet.FilterChain;
++import javax.servlet.ServletException;
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++import java.io.IOException;
++
++
++public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
++
++
++    @Autowired
++    private JwtUtil jwtUtil;
++
++    @Override
++    @Autowired
++    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
++        super.setAuthenticationManager(authenticationManager);
++    }
++
++    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
++        try {
++            UserCredentials userCredentials = new ObjectMapper().readValue(request.getInputStream(), UserCredentials.class);
++            return getAuthenticationManager().authenticate(new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword()));
++        } catch (IOException e) {
++            throw new RuntimeException("Invalid Credentials", e);
++        }
++    }
++
++
++        @Override
++    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
++        String username = ((User) authResult.getPrincipal()).getUsername();
++        String token = jwtUtil.generateToken(username);
++        response.addHeader("Authorization", "Bearer " + token);
++        response.setContentType("application/json");
++        response.getWriter().write("{\"jwt\":\"" + token + "\"}");
++    }
++
++
++}
+Index: spring-security/src/main/java/com/ust/app/springsecurity/service/AuthService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ust.app.springsecurity.service;\n\nimport com.ust.app.springsecurity.dto.JwtToken;\nimport com.ust.app.springsecurity.dto.UserCredentials;\nimport com.ust.app.springsecurity.model.UserModel;\nimport com.ust.app.springsecurity.repository.UserRepository;\nimport com.ust.app.springsecurity.util.JwtUtil;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.security.crypto.password.PasswordEncoder;\nimport org.springframework.stereotype.Service;\n\n@Service\npublic class AuthService {\n\n    @Autowired\n    private UserRepository userRepo;\n\n    @Autowired\n    PasswordEncoder passwordEncoder;\n\n    @Autowired\n    private JwtUtil jwtUtil;\n\n    public JwtToken authenticate(UserCredentials userCredentials){\n\n        UserModel userModel = userRepo.findByUsername(userCredentials.getUsername())\n                .orElseThrow();\n\n       if(!passwordEncoder.matches(userCredentials.getPassword(),userModel.getPassword())){\n           throw new RuntimeException(\"Invalid Credentials\");\n       }\n\n       String jwt = jwtUtil.generateToken(userModel.getUsername());\n       return new JwtToken(jwt);\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/service/AuthService.java b/spring-security/src/main/java/com/ust/app/springsecurity/service/AuthService.java
+--- a/spring-security/src/main/java/com/ust/app/springsecurity/service/AuthService.java	(revision 0c411c3480307ef499232eeb9d3badd269313b28)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/service/AuthService.java	(date 1732535281752)
+@@ -6,6 +6,11 @@
+ import com.ust.app.springsecurity.repository.UserRepository;
+ import com.ust.app.springsecurity.util.JwtUtil;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.security.authentication.AuthenticationManager;
++import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
++import org.springframework.security.core.Authentication;
++import org.springframework.security.core.AuthenticationException;
++import org.springframework.security.core.userdetails.UserDetailsService;
+ import org.springframework.security.crypto.password.PasswordEncoder;
+ import org.springframework.stereotype.Service;
+ 
+@@ -13,25 +18,28 @@
+ public class AuthService {
+ 
+     @Autowired
+-    private UserRepository userRepo;
++    private UserDetailsService userDetailsService;
+ 
+     @Autowired
+     PasswordEncoder passwordEncoder;
+ 
+     @Autowired
+-    private JwtUtil jwtUtil;
++    AuthenticationManager authenticationManager;
+ 
+-    public JwtToken authenticate(UserCredentials userCredentials){
+ 
+-        UserModel userModel = userRepo.findByUsername(userCredentials.getUsername())
+-                .orElseThrow();
++    public void authenticate(UserCredentials userCredentials){
+ 
+-       if(!passwordEncoder.matches(userCredentials.getPassword(),userModel.getPassword())){
+-           throw new RuntimeException("Invalid Credentials");
+-       }
++        try {
++            Authentication authentication = authenticationManager.authenticate(
++                    new UsernamePasswordAuthenticationToken(userCredentials.getUsername(), userCredentials.getPassword())
++            );
++        } catch (AuthenticationException e) {
++            throw new RuntimeException("Invalid Credentials", e);
++        }
+ 
+-       String jwt = jwtUtil.generateToken(userModel.getUsername());
+-       return new JwtToken(jwt);
++
++
++
+     }
+ 
+ 
+Index: spring-security/src/main/java/com/ust/app/springsecurity/util/AuthFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/util/AuthFilter.java b/spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthorizationFilter.java
+rename from spring-security/src/main/java/com/ust/app/springsecurity/util/AuthFilter.java
+rename to spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthorizationFilter.java
+--- a/spring-security/src/main/java/com/ust/app/springsecurity/util/AuthFilter.java	(revision 0c411c3480307ef499232eeb9d3badd269313b28)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/util/JwtAuthorizationFilter.java	(date 1732535471705)
+@@ -1,8 +1,5 @@
+ package com.ust.app.springsecurity.util;
+ 
+-import com.ust.app.springsecurity.model.UserModel;
+-import com.ust.app.springsecurity.repository.UserRepository;
+-import com.ust.app.springsecurity.service.UserDetailsImpl;
+ import com.ust.app.springsecurity.service.UserDetailsServiceImpl;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+@@ -18,13 +15,11 @@
+ import java.io.IOException;
+ 
+ @Component
+-public class AuthFilter extends OncePerRequestFilter {
++public class JwtAuthorizationFilter extends OncePerRequestFilter {
+ 
+     @Autowired
+     JwtUtil jwtUtil;
+ 
+-//    @Autowired
+-//    UserRepository userRepo;
+ 
+     @Autowired
+     UserDetailsServiceImpl userDetailsService;
+Index: spring-security/src/main/java/com/ust/app/springsecurity/SpringSecurityApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.ust.app.springsecurity;\n\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\n\n@SpringBootApplication\npublic class SpringSecurityApplication {\n\n    public static void main(String[] args) {\n        SpringApplication.run(SpringSecurityApplication.class, args);\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/spring-security/src/main/java/com/ust/app/springsecurity/SpringSecurityApplication.java b/spring-security/src/main/java/com/ust/app/springsecurity/SpringSecurityApplication.java
+--- a/spring-security/src/main/java/com/ust/app/springsecurity/SpringSecurityApplication.java	(revision 0c411c3480307ef499232eeb9d3badd269313b28)
++++ b/spring-security/src/main/java/com/ust/app/springsecurity/SpringSecurityApplication.java	(date 1732537723580)
+@@ -2,6 +2,9 @@
+ 
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.annotation.Bean;
++import org.springframework.security.authentication.AuthenticationManager;
++import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+ 
+ @SpringBootApplication
+ public class SpringSecurityApplication {
+@@ -10,4 +13,5 @@
+         SpringApplication.run(SpringSecurityApplication.class, args);
+     }
+ 
++
+ }
