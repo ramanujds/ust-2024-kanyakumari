@@ -8,7 +8,8 @@ export class ErrorHandlerService {
 
   errorResponse : ErrorResponse = {
     status:404,
-    message: "Oops! The page you're looking for is not here."
+    message: "Oops! The page you're looking for is not here.",
+    timestamp:new Date()
   };
 
   constructor() { }

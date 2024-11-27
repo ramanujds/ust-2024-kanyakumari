@@ -1,5 +1,6 @@
 package com.ust.todoapp.api;
 
+import com.ust.todoapp.exception.RecordNotFoundException;
 import com.ust.todoapp.model.Task;
 import com.ust.todoapp.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class TodoController {
     @GetMapping
     public List<Task> fetchAllTasks(){
         return taskRepo.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Task getTaskById(@PathVariable int id){
+        return taskRepo.findById(id)
+                .orElseThrow(()->new RecordNotFoundException("No Task found with ID : "+id));
     }
 
 }

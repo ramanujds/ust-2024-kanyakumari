@@ -23,7 +23,12 @@ export class TodoApiService {
     .pipe(
       catchError(
         err => {
-          console.error(err)
+          this.errorHandler.errorResponse={
+            message:'Unable to Connect to the Server',
+            status:503,
+            timestamp:new Date()
+
+          }
           this.router.navigate(['/error'])
           return throwError(()=>err)
         }

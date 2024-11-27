@@ -1,4 +1,5 @@
 export interface ErrorResponse{
     status:number,
-    message:string
+    message:string,
+    timestamp:Date
 }
