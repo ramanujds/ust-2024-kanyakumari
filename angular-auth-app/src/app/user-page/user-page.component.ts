@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthApiService } from '../auth-api.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
@@ -14,12 +14,13 @@ export class UserPageComponent implements OnInit {
 
   message?:string;
 
-  constructor(private authApiService:AuthApiService){}
+  constructor(private authApiService:AuthApiService, private router:Router){}
 
   ngOnInit(): void {
       this.authApiService.acccessApi()
         .subscribe(
-          response => this.message=response.message
+          response => this.message=response.message,
+          error => this.router.navigate(['/login'])
         )
   }
 
