@@ -28,11 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtAuthorizationFilter jwtAuthorizationFilter;
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.userDetailsService(userDetailsService);
-
-    }
 
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {

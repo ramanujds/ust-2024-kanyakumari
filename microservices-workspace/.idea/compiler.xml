@@ -10,12 +10,14 @@
         <module name="mutual-fund-service" />
         <module name="auth-service" />
         <module name="stocks-service" />
-        <module name="auth-service-with-spring-boot-2" />
         <module name="eureka-server" />
         <module name="api-gateway-server" />
         <module name="portfolio-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-service-with-spring-boot-2" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

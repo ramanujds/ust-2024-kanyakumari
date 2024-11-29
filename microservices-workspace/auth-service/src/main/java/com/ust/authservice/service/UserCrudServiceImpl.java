@@ -1,5 +1,6 @@
 package com.ust.authservice.service;
 
+import com.ust.authservice.dto.UserDtoResponse;
 import com.ust.authservice.model.UserModel;
 import com.ust.authservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,10 @@ public class UserCrudServiceImpl implements UserCrudService{
     PasswordEncoder passwordEncoder;
 
     @Override
-    public UserModel saveUser(UserModel user) {
+    public UserDtoResponse saveUser(UserModel user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        return userRepository.save(user);
+        var savedUser = userRepository.save(user);
+        return new UserDtoResponse(savedUser.getUsername(), savedUser.getRole());
     }
 }
